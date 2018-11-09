@@ -2,7 +2,7 @@
 {
   "name": "react-native-nearbee",
   "version": "1.0.0",
-  "description": "",
+  "description": "NearBee SDK for your react native applications",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,9 +10,14 @@
   "keywords": [
     "react-native"
   ],
-  "author": "",
+  "author": {
+      "name": "Beaconstac",
+      "email": "support@beaconstac.com",
+      "url": "https://github.com/Beaconstac"
+  },
   "license": "",
   "peerDependencies": {
     "react-native": "^0.41.2"
   }
+  "homepage": "https://github.com/Beaconstac/react-native-nearbee",
 }
