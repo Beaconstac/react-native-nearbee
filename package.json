@@ -18,6 +18,6 @@
   "license": "",
   "peerDependencies": {
     "react-native": "^0.41.2"
-  }
+  },
   "homepage": "https://github.com/Beaconstac/react-native-nearbee",
 }
