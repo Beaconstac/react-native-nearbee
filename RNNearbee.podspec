@@ -10,6 +10,7 @@ s.description    = package['description']
 s.license        = package['license']
 s.author         = package['author']
 s.homepage       = package['homepage']
+s.swift_version   = '4.2'
 s.source         = { :git => 'https://github.com/Beaconstac/react-native-nearbee.git', :tag => s.version }
 
 
