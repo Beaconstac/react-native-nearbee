@@ -18,6 +18,7 @@ RCT_EXPORT_MODULE();
 }
 
 RCT_METHOD_EXPORT(shared:(NSString * _Nonnull)token organization:(NSInteger)organization resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    
     [NearBee shared:token organization:organization completion:^(NearBee * _Nullable nearBeeInstance, NSError * _Nullable error){
         if (!error) {
             resolve(@YES);
