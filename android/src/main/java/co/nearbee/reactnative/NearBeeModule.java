@@ -6,7 +6,7 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
-//import co.nearbee.NearBee;
+import co.nearbee.NearBee;
 
 public class NearBeeModule extends ReactContextBaseJavaModule {
 
@@ -22,11 +22,11 @@ public class NearBeeModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void initialize(String msg) {
-        // new NearBee.Builder(getReactApplicationContext())
-        //         .setBackgroundNotificationsEnabled(true)
-        //         .build();
-        Log.e("meh", msg);
+    public void initialize() {
+        Log.d("Nearbee", "Init");
+         new NearBee.Builder(getReactApplicationContext())
+                 .setBackgroundNotificationsEnabled(true)
+                 .build();
     }
 
 }
