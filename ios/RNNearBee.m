@@ -1,6 +1,6 @@
 
-#import <NearBee/NearBee.h>
-#import "RNNearbee.h"
+#import <NearBee/NearBee-Swift.h>
+#import "RNNearBee.h"
 #import <Foundation/Foundation.h>
 
 @implementation RNNearbee
@@ -17,85 +17,84 @@ RCT_EXPORT_MODULE();
     return @[@"WillChangeContent", @"DidChangeContent", @"DidChangeObject"];
 }
 
-RCT_METHOD_EXPORT(shared:(NSString * _Nonnull)token organization:(NSInteger)organization resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_EXPORT_METHOD(shared:(NSString *)token organization:(NSInteger)organization resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     
     [NearBee shared:token organization:organization completion:^(NearBee * _Nullable nearBeeInstance, NSError * _Nullable error){
         if (!error) {
             resolve(@YES);
         } else {
-            reject(@"no_instance", @"There is no instance", error);
+            reject(error);
         }
     }];
 }
 
 RCT_REMAP_METHOD(sharedInstance, sharedInstanceWithresolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSError *error = nil;
-    NearBee *nearBeeInstace = [NearBee sharedInstanceAndReturnError:&error];
+    NearBee *nearBeeInstance = [NearBee sharedAndReturnError:&error];
     if (!error) {
         resolve(@YES);
     } else {
-        reject(@"no_instance", @"There is no instance", error);
+        reject(error);
     }
 }
 
 RCT_REMAP_METHOD(startScanning, startScanningWithresolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSError *error = nil;
-    NearBee *nearBeeInstace = [NearBee sharedInstanceAndReturnError:&error];
+    NearBee *nearBeeInstance = [NearBee sharedAndReturnError:&error];
     if (!error) {
-        if (!nearBeeInstance.isScanning) {
-            [nearBeeInstace startScanning];
+        if (!nearBeeInstance.scanningInProgress) {
+            [nearBeeInstance startScanning];
         }
         resolve(@YES);
     } else {
-        reject(@"no_instance", @"There is no instance", error);
+        reject(error);
     }
 }
 
 RCT_REMAP_METHOD(stopScanning, stopScanningWithresolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSError *error = nil;
-    NearBee *nearBeeInstace = [NearBee sharedInstanceAndReturnError:&error];
+    NearBee *nearBeeInstance = [NearBee sharedAndReturnError:&error];
     if (!error) {
-        if (nearBeeInstance.isScanning) {
-            [nearBeeInstace stopScanning];
+        if (nearBeeInstance.scanningInProgress) {
+            [nearBeeInstance stopScanning];
         }
         resolve(@YES);
     } else {
-        reject(@"no_instance", @"There is no instance", error);
+        reject(error);
     }
 }
 
 RCT_REMAP_METHOD(ignoreCacheOnce, ignoreCacheOnceWithresolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSError *error = nil;
-    NearBee *nearBeeInstace = [NearBee sharedInstanceAndReturnError:&error];
+    NearBee *nearBeeInstance = [NearBee sharedAndReturnError:&error];
     if (!error) {
-        [nearBeeInstace ignoreCacheOnce];
+        [nearBeeInstance ignoreCacheOnce];
         resolve(@YES);
     } else {
-        reject(@"no_instance", @"There is no instance", error);
+        reject(error);
     }
 }
 
-RCT_METHOD_EXPORT(checkAndProcessNearbyNotification:(UNNotification * _Nonnull)notification resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_EXPORT_METHOD(checkAndProcessNearbyNotification:(UNNotification * _Nonnull)notification resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSError *error = nil;
-    NearBee *nearBeeInstace = [NearBee sharedInstanceAndReturnError:&error];
+    NearBee *nearBeeInstance = [NearBee sharedAndReturnError:&error];
     if (!error) {
-        [nearBeeInstace checkAndProcessNearbyNotification:notification];
+        [nearBeeInstance checkAndProcessNearbyNotification:notification];
         resolve(@YES);
     } else {
-        reject(@"no_instance", @"There is no instance", error);
+        reject(error);
     }
 }
 
-RCT_METHOD_EXPORT(displayContentOfEddystoneUrl:(NSString * _Nonnull)eddystoneUrl resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_EXPORT_METHOD(displayContentOfEddystoneUrl:(NSString * _Nonnull)eddystoneUrl resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSError *error = nil;
-    NearBee *nearBeeInstace = [NearBee sharedInstanceAndReturnError:&error];
+    NearBee *nearBeeInstance = [NearBee sharedAndReturnError:&error];
     if (!error) {
-        [nearBeeInstace displayContentOfEddystoneUrl:eddystoneUrl];
+        [nearBeeInstance displayContentOfEddystoneUrl:eddystoneUrl];
         resolve(@YES);
     } else {
-        reject(@"no_instance", @"There is no instance", error);
+        reject(error);
     }
 }
 
 @end
-  
