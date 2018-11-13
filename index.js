@@ -3,7 +3,7 @@ import {NativeModules} from 'react-native';
 
 console.log(NativeModules);
 
-const { RNNearbee } = NativeModules;
+const { RNNearBee } = NativeModules;
 
 export default RNNearbee;
 
