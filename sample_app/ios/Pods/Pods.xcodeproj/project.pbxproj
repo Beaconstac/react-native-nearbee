@@ -887,6 +887,7 @@
 		09971CA0D32B681E9B702EFD4FD8437C /* RCTValueAnimatedNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTValueAnimatedNode.h; sourceTree = "<group>"; };
 		099C671A12AB2D7C8043EC40BF732256 /* RCTCxxMethod.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTCxxMethod.h; sourceTree = "<group>"; };
 		09C753644A6717D94539A1EF93689C8E /* RCTPerformanceLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTPerformanceLogger.h; sourceTree = "<group>"; };
+		0ADFEAF9F5BE6CA90B0E4850835D4859 /* RNNearBee.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = RNNearBee.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		0AF50F6448A674446D5A27EAA031F7D2 /* RCTNavigator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTNavigator.m; sourceTree = "<group>"; };
 		0AF5274FA7D5E864FD49D9ACCA65D57D /* JSIndexedRAMBundle.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = JSIndexedRAMBundle.cpp; path = ReactCommon/cxxreact/JSIndexedRAMBundle.cpp; sourceTree = "<group>"; };
 		0AF5A03FF2FA2566C64FA96F58B322D5 /* RCTSurface.mm */ = {isa = PBXFileReference; includeInIndex = 1; path = RCTSurface.mm; sourceTree = "<group>"; };
@@ -1082,7 +1083,6 @@
 		4DB4A9E3F76C57796E164DDAA43E6046 /* RCTJSCSamplingProfiler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTJSCSamplingProfiler.h; sourceTree = "<group>"; };
 		4DD2F86E8F428A2C8C428E60FCEECAE3 /* SocketRawView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketRawView.swift; path = Source/SocketIO/Client/SocketRawView.swift; sourceTree = "<group>"; };
 		4E0E0DB1AEF292254B5D0DECFBBB9827 /* RCTScrollContentShadowView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTScrollContentShadowView.h; sourceTree = "<group>"; };
-		4E77F0CAA725D89626B15C969C5B5EE5 /* RNNearbee.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = RNNearbee.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4E7C0BC6CFF30630A5C0E2678F3A22A1 /* RCTJavaScriptExecutor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTJavaScriptExecutor.h; sourceTree = "<group>"; };
 		4F33F2FBB3416A28DC25D17D78515477 /* RCTNavItemManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTNavItemManager.m; sourceTree = "<group>"; };
 		4F4B793793EB17B8F58F9BF3B30716C5 /* RCTNativeModule.mm */ = {isa = PBXFileReference; includeInIndex = 1; path = RCTNativeModule.mm; sourceTree = "<group>"; };
@@ -1121,7 +1121,6 @@
 		5A7CB899C05258AB6E1B46410BDE457E /* RCTDevLoadingView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTDevLoadingView.m; sourceTree = "<group>"; };
 		5ADF6D6E90DB508771757D6089B8ADBB /* RCTWebSocketModule.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RCTWebSocketModule.m; path = Libraries/WebSocket/RCTWebSocketModule.m; sourceTree = "<group>"; };
 		5B7F459E8E3CEAA24703B0FF77A14DBF /* RCTImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCTImageCache.h; path = Libraries/Image/RCTImageCache.h; sourceTree = "<group>"; };
-		5BB041E84667F6C96B4EE4075D2F2B7F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		5BDEC4F3ECCAD700E0B10483F17D4D3E /* RCTErrorInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTErrorInfo.h; sourceTree = "<group>"; };
 		5BE022643E7D52B440EA87A90E320F39 /* RCTTextTransform.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCTTextTransform.h; path = Libraries/Text/RCTTextTransform.h; sourceTree = "<group>"; };
 		5C7157604A086934071AB33A2ACC4CF0 /* GaussianFilter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GaussianFilter.swift; path = EddystoneScanner/RSSIFilters/GaussianFilter.swift; sourceTree = "<group>"; };
@@ -1179,6 +1178,7 @@
 		6E73F5733CCA4514A9086E0B49A2ADBB /* strtod.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = strtod.cc; path = "double-conversion/strtod.cc"; sourceTree = "<group>"; };
 		6EAC9A27A2163A2AFA428CBBC4DE4EF1 /* JSModulesUnbundle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JSModulesUnbundle.h; path = ReactCommon/cxxreact/JSModulesUnbundle.h; sourceTree = "<group>"; };
 		6EC61D217D723AD7A57DABB9FA83DAF6 /* RCTVirtualTextViewManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTVirtualTextViewManager.h; sourceTree = "<group>"; };
+		6F0540D85BA2CFB7662973AFD54F27B3 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		6FD52C94B2A330048C4844D67F320315 /* RCTPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTPicker.h; sourceTree = "<group>"; };
 		7015EF7654B8B12B4226493B6B7DEF8B /* RCTDevMenu.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTDevMenu.h; sourceTree = "<group>"; };
 		7023D9A42888752677F84AA09161C44C /* utilities.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = utilities.cc; path = src/utilities.cc; sourceTree = "<group>"; };
@@ -1380,7 +1380,6 @@
 		B67FF8B1EED10FC2018E2CD884238212 /* RCTConvert+Text.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "RCTConvert+Text.m"; path = "Libraries/Text/RCTConvert+Text.m"; sourceTree = "<group>"; };
 		B8027B2EDF097E865702FD0FEAB1B336 /* InspectorInterfaces.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = InspectorInterfaces.h; path = ReactCommon/jsinspector/InspectorInterfaces.h; sourceTree = "<group>"; };
 		B8B42B056DAE73C93E2744E97F30E12E /* yoga.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = yoga.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B8CF3D2E7B5D21E395804F5BBD94CD3E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		B96AA266B2EAFA8092F77EA760C1B49C /* RCTURLRequestHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTURLRequestHandler.h; sourceTree = "<group>"; };
 		B9A4505D4C3B1CD362BBD9A3BE20FE90 /* RCTStatusBarManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCTStatusBarManager.m; sourceTree = "<group>"; };
 		BA509DD55794BE77747569697EF51291 /* RCTTabBarManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTTabBarManager.h; sourceTree = "<group>"; };
@@ -1479,6 +1478,7 @@
 		D9FF2565034281429C561312EBE8EE6C /* JsArgumentHelpers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JsArgumentHelpers.h; path = ReactCommon/cxxreact/JsArgumentHelpers.h; sourceTree = "<group>"; };
 		DBCAC57144ACD0F183C4C02F183B1CF5 /* Yoga-internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Yoga-internal.h"; path = "yoga/Yoga-internal.h"; sourceTree = "<group>"; };
 		DC072A522950E3D27AF1CA99E3B03CE5 /* Pods-sample_app-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-sample_app-resources.sh"; sourceTree = "<group>"; };
+		DC63C74BBA3D9D3DE5E243674E66B829 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		DCF275260D0DE82B1633C8C194BA02BC /* RCTConvert+CoreLocation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RCTConvert+CoreLocation.h"; sourceTree = "<group>"; };
 		DCF8545E4EDE8F83DFDA59E0AC391CD6 /* yoga.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = yoga.framework; path = yoga.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD18723827F3B0D4FA479EAD8E2B490D /* RCTKeyboardObserver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCTKeyboardObserver.h; sourceTree = "<group>"; };
@@ -1675,16 +1675,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0209A5A8B7A944732A1D0A3C7564539E /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				5BB041E84667F6C96B4EE4075D2F2B7F /* LICENSE */,
-				B8CF3D2E7B5D21E395804F5BBD94CD3E /* README.md */,
-				4E77F0CAA725D89626B15C969C5B5EE5 /* RNNearbee.podspec */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
 		04DB37D1006924C576F4FECB80DDBD04 /* Profiler */ = {
 			isa = PBXGroup;
 			children = (
@@ -2588,6 +2578,16 @@
 			path = React/UIUtils;
 			sourceTree = "<group>";
 		};
+		A37876075643F54C681F625D81121FAF /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				6F0540D85BA2CFB7662973AFD54F27B3 /* LICENSE */,
+				DC63C74BBA3D9D3DE5E243674E66B829 /* README.md */,
+				0ADFEAF9F5BE6CA90B0E4850835D4859 /* RNNearBee.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
 		A5A30B4AB85B01872A538137E45804E5 /* Surface */ = {
 			isa = PBXGroup;
 			children = (
@@ -2964,7 +2964,7 @@
 			children = (
 				C532938DCCC21474889EACBF9F6689B0 /* RNNearBee.h */,
 				1C22610C95DB4831CD6BED353791765A /* RNNearBee.m */,
-				0209A5A8B7A944732A1D0A3C7564539E /* Pod */,
+				A37876075643F54C681F625D81121FAF /* Pod */,
 				31F658C16BEEC186FD8D65CF3643E044 /* Support Files */,
 			);
 			name = RNNearBee;

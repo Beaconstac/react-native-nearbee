@@ -19,9 +19,28 @@ const instructions = Platform.select({
 
 //type Props = {};
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { isLoaded: false};
+  }
+  async componentDidMount() {
+    try {
+      const isLoaded = await NearBeeModule.shared("08ddda7aabcbecfa54b29f6d032d7d289eb241b5", 1697)
+      NearBeeModule.ignoreCacheOnce();
+      NearBeeModule.startScanning();
+      this.setState({isLoaded});
+    } catch (ex) {
+      console.log('Error = ', ex);
+    }
+  }
   render() {
-    NearBeeModule.shared();
+    const {isLoaded} = this.state;
     return (
+      isLoaded ? 
+      <View style={styles.container}>
+        <Text style={styles.welcome}>Welcome to React Native!</Text>
+      </View>
+      :
       <View style={styles.container}>
         <Text style={styles.welcome}>Welcome to React Native!</Text>
         <Text style={styles.instructions}>To get started, edit App.js</Text>

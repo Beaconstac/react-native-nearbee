@@ -12,7 +12,7 @@
     "Beaconstac": "support@beaconstac.com"
   },
   "source": {
-    "git": "https://github.com/Beaconstac/react-native-nearbee.git",
+    "git": "https://github.com/Beaconstac/react-native-nearbee",
     "tag": "1.0.0"
   },
   "source_files": "ios/*.{h,m}",

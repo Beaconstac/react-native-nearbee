@@ -30,6 +30,7 @@ target 'sample_app' do
   pod 'Folly', :podspec => folly_spec_path
   pod 'DoubleConversion', :podspec => double_conversion_spec_path
   pod 'glog', :podspec => glog_spec_path
-  pod 'RNNearbee', :path => '../node_modules/react-native-nearbee'
+
+  pod 'RNNearBee', :path => '../node_modules/react-native-nearbee'
 
 end

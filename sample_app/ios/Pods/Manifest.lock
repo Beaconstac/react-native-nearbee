@@ -110,7 +110,7 @@ SPEC CHECKSUMS:
   glog: e8acf0ebbf99759d3ff18c86c292a5898282dcde
   NearBee: 94d783e7254bbc9e9167d99816e098d2f89364d8
   React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
-  RNNearBee: 58c68a8f883d8c8e116efa24b61934814ab916a3
+  RNNearBee: 5948b60b1c5af38d44e5d97793c432b0a9b11de2
   Socket.IO-Client-Swift: 79f8f85fa44881838175a20f9bd2c32bef2c9d37
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
