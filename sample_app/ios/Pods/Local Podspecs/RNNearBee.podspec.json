@@ -1,0 +1,60 @@
+{
+  "name": "RNNearBee",
+  "version": "1.0.0",
+  "description": "A wrapper for NearBee.",
+  "summary": "Components for RNNearBee.",
+  "homepage": "https://github.com/Beaconstac/react-native-nearbee",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Beaconstac": "support@beaconstac.com"
+  },
+  "source": {
+    "git": "https://github.com/Beaconstac/react-native-nearbee.git",
+    "tag": "1.0.0"
+  },
+  "source_files": "ios/*.{h,m}",
+  "platforms": {
+    "ios": "10.0"
+  },
+  "dependencies": {
+    "React/Core": [
+      "0.57.4"
+    ],
+    "React/CxxBridge": [
+      "0.57.4"
+    ],
+    "React/RCTAnimation": [
+      "0.57.4"
+    ],
+    "React/RCTImage": [
+      "0.57.4"
+    ],
+    "React/RCTLinkingIOS": [
+      "0.57.4"
+    ],
+    "React/RCTNetwork": [
+      "0.57.4"
+    ],
+    "React/RCTText": [
+      "0.57.4"
+    ],
+    "yoga": [
+      "0.57.4.React"
+    ],
+    "DoubleConversion": [
+      "1.1.6"
+    ],
+    "Folly": [
+      "2016.10.31.00"
+    ],
+    "glog": [
+      "0.3.5"
+    ],
+    "NearBee": [
+
+    ]
+  }
+}

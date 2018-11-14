@@ -20,7 +20,7 @@ const instructions = Platform.select({
 //type Props = {};
 export default class App extends Component {
   render() {
-    NearBeeModule.initialize();
+    NearBeeModule.shared();
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>Welcome to React Native!</Text>

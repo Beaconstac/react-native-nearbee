@@ -1,0 +1,11 @@
+EMBEDDED_CONTENT_CONTAINS_SWIFT = YES
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/DoubleConversion" "${PODS_CONFIGURATION_BUILD_DIR}/EddystoneScanner" "${PODS_CONFIGURATION_BUILD_DIR}/Folly" "${PODS_CONFIGURATION_BUILD_DIR}/RNNearBee" "${PODS_CONFIGURATION_BUILD_DIR}/React" "${PODS_CONFIGURATION_BUILD_DIR}/Socket.IO-Client-Swift" "${PODS_CONFIGURATION_BUILD_DIR}/Starscream" "${PODS_CONFIGURATION_BUILD_DIR}/glog" "${PODS_CONFIGURATION_BUILD_DIR}/yoga" "${PODS_ROOT}/NearBee/NearBee"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+OTHER_CFLAGS = $(inherited) -iquote "${PODS_CONFIGURATION_BUILD_DIR}/DoubleConversion/DoubleConversion.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/EddystoneScanner/EddystoneScanner.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Folly/folly.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/RNNearBee/RNNearBee.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/React/React.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Socket.IO-Client-Swift/SocketIO.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Starscream/Starscream.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/glog/glog.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/yoga/yoga.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "CoreBluetooth" -framework "CoreData" -framework "CoreLocation" -framework "DoubleConversion" -framework "EddystoneScanner" -framework "NearBee" -framework "RNNearBee" -framework "React" -framework "SafariServices" -framework "SocketIO" -framework "Starscream" -framework "SystemConfiguration" -framework "UserNotifications" -framework "folly" -framework "glog" -framework "yoga"
+OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
+PODS_BUILD_DIR = ${BUILD_DIR}
+PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
+PODS_ROOT = ${SRCROOT}/Pods
