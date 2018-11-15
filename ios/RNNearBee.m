@@ -5,7 +5,7 @@
 
 @implementation RNNearbee
 
-RCT_EXPORT_MODULE();
+RCT_EXPORT_MODULE(RNNearBee);
 
 - (dispatch_queue_t)methodQueue
 {
@@ -23,7 +23,7 @@ RCT_EXPORT_METHOD(shared:(NSString *)token organization:(NSInteger)organization 
         if (!error) {
             resolve(@YES);
         } else {
-            reject(error);
+            reject(@"no_events", @"There were no events", error);
         }
     }];
 }
@@ -34,7 +34,7 @@ RCT_REMAP_METHOD(sharedInstance, sharedInstanceWithresolver:(RCTPromiseResolveBl
     if (!error) {
         resolve(@YES);
     } else {
-        reject(error);
+        reject(@"no_events", @"There were no events", error);
     }
 }
 
@@ -47,7 +47,7 @@ RCT_REMAP_METHOD(startScanning, startScanningWithresolver:(RCTPromiseResolveBloc
         }
         resolve(@YES);
     } else {
-        reject(error);
+        reject(@"no_events", @"There were no events", error);
     }
 }
 
@@ -60,7 +60,7 @@ RCT_REMAP_METHOD(stopScanning, stopScanningWithresolver:(RCTPromiseResolveBlock)
         }
         resolve(@YES);
     } else {
-        reject(error);
+        reject(@"no_events", @"There were no events", error);
     }
 }
 
@@ -71,7 +71,7 @@ RCT_REMAP_METHOD(ignoreCacheOnce, ignoreCacheOnceWithresolver:(RCTPromiseResolve
         [nearBeeInstance ignoreCacheOnce];
         resolve(@YES);
     } else {
-        reject(error);
+        reject(@"no_events", @"There were no events", error);
     }
 }
 
@@ -82,7 +82,7 @@ RCT_EXPORT_METHOD(checkAndProcessNearbyNotification:(UNNotification * _Nonnull)n
         [nearBeeInstance checkAndProcessNearbyNotification:notification];
         resolve(@YES);
     } else {
-        reject(error);
+        reject(@"no_events", @"There were no events", error);
     }
 }
 
@@ -93,7 +93,7 @@ RCT_EXPORT_METHOD(displayContentOfEddystoneUrl:(NSString * _Nonnull)eddystoneUrl
         [nearBeeInstance displayContentOfEddystoneUrl:eddystoneUrl];
         resolve(@YES);
     } else {
-        reject(error);
+        reject(@"no_events", @"There were no events", error);
     }
 }
 

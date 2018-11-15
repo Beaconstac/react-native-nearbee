@@ -1,0 +1,11 @@
+framework module NearBee {
+  umbrella header "NearBee.h"
+
+  export *
+  module * { export * }
+}
+
+module NearBee.Swift {
+    header "NearBee-Swift.h"
+    requires objc
+}

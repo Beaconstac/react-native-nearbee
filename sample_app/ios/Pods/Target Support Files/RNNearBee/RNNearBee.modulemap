@@ -1,0 +1,6 @@
+framework module RNNearBee {
+  umbrella header "RNNearBee-umbrella.h"
+
+  export *
+  module * { export * }
+}

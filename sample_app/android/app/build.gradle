@@ -95,7 +95,7 @@ def enableProguardInReleaseBuilds = false
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion '28.0.3'
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.sample_app"
@@ -133,19 +133,6 @@ android {
                         versionCodes.get(abi) * 1048576 + defaultConfig.versionCode
             }
         }
-    }
-}
-
-configurations.all {
-    resolutionStrategy {
-        force 'com.android.support:support-compat:28.0.0'
-        force 'com.android.support:support-fragment:28.0.0'
-        force 'com.android.support:animated-vector-drawable:28.0.0'
-        force 'com.android.support:support-vector-drawable:28.0.0'
-        force 'com.android.support:appcompat-v7:28.0.0'
-        force 'com.android.support:support-core-utils:28.0.0'
-        force 'com.android.support:support-core-ui:28.0.0'
-        force 'android.arch.lifecycle:viewmode:1.1.0'
     }
 }
 

@@ -1,0 +1,35 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '10.0'
+
+node_modules_path = '../node_modules'
+react_path = File.join(node_modules_path, 'react-native')
+rnnearbee_spec_path = File.join(node_modules_path, 'react-native-nearbee/RNNearBee.podspec')
+yoga_path = File.join(react_path, 'ReactCommon/yoga')
+folly_spec_path = File.join(react_path, 'third-party-podspecs/Folly.podspec')
+glog_spec_path = File.join(react_path, 'third-party-podspecs/glog.podspec')
+double_conversion_spec_path = File.join(react_path, 'third-party-podspecs/DoubleConversion.podspec')
+
+target 'sample_app' do
+  use_frameworks!
+  inherit! :search_paths
+
+  pod 'NearBee'
+  # We want extra developer support in React inside this app
+  pod 'React', :path => react_path, :subspecs => [
+    'Core',
+    'CxxBridge', # Include this for RN >= 0.47
+    'DevSupport', # Include this to enable In-App Devmenu if RN >= 0.43
+    'RCTText',
+    'RCTNetwork',
+    'RCTWebSocket', # Needed for debugging
+    'RCTAnimation',
+  ]
+
+  # We're letting CP know where it can find these Podspecs
+  pod 'yoga', :path => yoga_path
+  pod 'Folly', :podspec => folly_spec_path
+  pod 'DoubleConversion', :podspec => double_conversion_spec_path
+  pod 'glog', :podspec => glog_spec_path
+  pod 'RNNearbee', :path => '../node_modules/react-native-nearbee'
+
+end
