@@ -8,7 +8,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Button, DeviceEventEmitter} from 'react-native';
-import NearBeeModule from './nearbee_sdk/NearBee';
+import NearBee from './nearbee_sdk/NearBee';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -21,7 +21,7 @@ export default class App extends Component {
 
   constructor() {
     super();
-    NearBeeModule.initialize();
+    NearBee.initialize();
     this.bgEnabled = false;
     this.scanning = false;
 
@@ -45,11 +45,11 @@ export default class App extends Component {
         })
       }
       this.bgEnabled = !this.bgEnabled;
-      NearBeeModule.enableBackgroundNotifications(this.bgEnabled);
+      NearBee.enableBackgroundNotifications(this.bgEnabled);
   }
 
   onBeaconsFound = (event) => {
-    let beacJson = JSON.parse(event.beacons);
+    let beacJson = JSON.parse(event.notifications);
     let beaconsString = "";
     for (let index = 0; index < beacJson.notifications.length; index++) {
       const element = beacJson.notifications[index];
@@ -67,12 +67,12 @@ export default class App extends Component {
       this.setState({
         scanText: "Start scanning",
       })
-      NearBeeModule.stopScanning();
+      NearBee.stopScanning();
     } else {
       this.setState({
         scanText: "Stop scanning",
       })
-      NearBeeModule.startScanning();
+      NearBee.startScanning();
     }
     this.scanning = !this.scanning;
   }

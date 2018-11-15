@@ -32,7 +32,7 @@ public class NearBeeModule extends ReactContextBaseJavaModule implements NearBee
 
     @Override
     public String getName() {
-        return "NearBeeModule";
+        return "NearBee";
     }
 
     @ReactMethod
