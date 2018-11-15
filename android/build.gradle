@@ -16,5 +16,5 @@ android {
 
 dependencies {
     implementation "com.facebook.react:react-native:+"
-    implementation 'co.nearbee:nearbeesdk:1.0.2'
+    implementation 'co.nearbee:nearbeesdk:1.0.4'
 }

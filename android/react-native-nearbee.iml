@@ -197,7 +197,6 @@
     <orderEntry type="jdk" jdkName="Android API 28 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Gradle: io.socket:socket.io-client:1.0.0@jar" level="project" />
-    <orderEntry type="library" name="Gradle: co.nearbee:nearbeesdk-1.0.2" level="project" />
     <orderEntry type="library" name="Gradle: io.reactivex.rxjava2:rxjava:2.2.1@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:localbroadcastmanager-28.0.0" level="project" />
     <orderEntry type="library" name="Gradle: com.mobstac.beaconstac:scanner-0.27.1" level="project" />
@@ -265,6 +264,7 @@
     <orderEntry type="library" name="Gradle: com.android.support:animated-vector-drawable-28.0.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:appcompat-v7-28.0.0" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.fresco:imagepipeline-base-1.10.0" level="project" />
+    <orderEntry type="library" name="Gradle: co.nearbee:nearbeesdk-1.0.4" level="project" />
     <orderEntry type="library" name="Gradle: com.google.dagger:dagger-android-support-2.17" level="project" />
   </component>
 </module>

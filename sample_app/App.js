@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button, DeviceEventEmitter} from 'react-native';
 import NearBeeModule from './nearbee_sdk/NearBee';
 
 const instructions = Platform.select({
@@ -17,15 +17,88 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-//type Props = {};
 export default class App extends Component {
-  render() {
+
+  constructor() {
+    super();
     NearBeeModule.initialize();
+    this.bgEnabled = false;
+    this.scanning = false;
+
+    this.state = {
+        bgButtonText:"Enable BG notification",
+        scanText:"Start scanning",
+        beacons:"No beacons in range"
+    }
+
+    DeviceEventEmitter.addListener('notifications', this.onBeaconsFound);
+  }
+
+  onBackgroundChange = () => {
+      if (this.bgEnabled === true) {
+        this.setState({
+          bgButtonText: "Enable BG notification",
+        })
+      } else {
+        this.setState({
+          bgButtonText: "Disable BG notification",
+        })
+      }
+      this.bgEnabled = !this.bgEnabled;
+      NearBeeModule.enableBackgroundNotifications(this.bgEnabled);
+  }
+
+  onBeaconsFound = (event) => {
+    let beacJson = JSON.parse(event.beacons);
+    let beaconsString = "";
+    for (let index = 0; index < beacJson.notifications.length; index++) {
+      const element = beacJson.notifications[index];
+      let beac = element.title + '\n' + element.description + '\n' + element.url + '\n\n';
+      beaconsString = beaconsString + beac;
+    }
+    this.setState({
+      beacons: beaconsString,
+    });
+
+  }
+
+  scanToggle = () => {
+    if (this.scanning === true) {
+      this.setState({
+        scanText: "Start scanning",
+      })
+      NearBeeModule.stopScanning();
+    } else {
+      this.setState({
+        scanText: "Stop scanning",
+      })
+      NearBeeModule.startScanning();
+    }
+    this.scanning = !this.scanning;
+  }
+
+  render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <Text style={styles.welcome}>NearBee</Text>
+        <Text style={styles.instructions}>{this.state.beacons}</Text>
+
+        <Button style={styles.buttonNB}
+          onPress={() => {
+            this.onBackgroundChange();
+          }}
+          color="#374668"
+          title={this.state.bgButtonText}
+        />
+
+        <Button buttonStyle={styles.buttonNB}
+          onPress={() => {
+            this.scanToggle();
+          }}
+          color="#374668"
+          title={this.state.scanText}
+        />
+
       </View>
     );
   }
@@ -41,7 +114,7 @@ const styles = StyleSheet.create({
   welcome: {
     fontSize: 20,
     textAlign: 'center',
-    margin: 10,
+    margin: 20,
   },
   instructions: {
     textAlign: 'center',
