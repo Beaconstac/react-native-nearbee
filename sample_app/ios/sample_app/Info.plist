@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>co.nearbee.api_key</key>
-	<string>08ddda7aabcbecfa54b29f6d032d7d289eb241b5</string>
+	<string>MY_DEVELOPER_TOKEN</string>
 	<key>co.nearbee.organization_id</key>
-	<string>1697</string>
+	<string>MY_ORGANIZATION_ID</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>LSApplicationCategoryType</key>

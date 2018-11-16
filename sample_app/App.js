@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button, DeviceEventEmitter, NativeAppEventEmitter} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button, NativeEventEmitter, FlatList} from 'react-native';
 import NearBee from './nearbee_sdk/NearBee';
 
 const eventBeacons = "nearBeeNotifications";
@@ -23,12 +23,14 @@ export default class App extends Component {
         this.state = {
             bgButtonText: "Enable BG notification",
             scanText: "Start scanning",
-            beacons: "No beacons in range"
+            beaconString: "No beacons in range",
+            beacons: [],
+            loading: false,
         };
 
-        const emitter = Platform.OS == 'ios' ? NativeAppEventEmitter : DeviceEventEmitter;
-        emitter.addListener(eventBeacons, this.onBeaconsFound);
-        emitter.addListener(eventError, this.onError);
+        const eventEmitter = new NativeEventEmitter(NearBee);
+        eventEmitter.addListener(eventBeacons, this.onBeaconsFound);
+        eventEmitter.addListener(eventError, this.onError);
     }
 
     onBackgroundChange = () => {
@@ -47,15 +49,14 @@ export default class App extends Component {
 
     onBeaconsFound = (event) => {
         let beacJson = JSON.parse(event.nearBeeNotifications);
-        let beaconsString = "";
+        let beacons = [];
         for (let index = 0; index < beacJson.nearBeeNotifications.length; index++) {
             const element = beacJson.nearBeeNotifications[index];
-            let beac = element.title + '\n' + element.description + '\n' + element.url + '\n\n';
-            beaconsString = beaconsString + beac;
+            beacons.push(element);
         }
-
         this.setState({
-            beacons: beaconsString,
+            beaconString: "",
+            beacons: beacJson.nearBeeNotifications
         });
     };
 
@@ -81,7 +82,25 @@ export default class App extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            // if (this.state.beacons.length > 0) {
+                // <FlatList 
+                //     keyExtractor={this._keyExtractor}
+                //     data={this.state.beacons}
+                //     renderItem={({ beacon }) => ( 
+                //         <ListItem
+                //             <View style={styles.itemBlock}>
+                //                 <Image source={{uri: beacon.icon}} style={styles.itemImage}/>
+                //                 <View style={styles.itemMeta}>
+                //                     <Text style={styles.itemName}>{beacon.title}</Text>
+                //                     <Text style={styles.itemLastMessage}>{beacon.description}</Text>
+                //                     <Text style={styles.itemLastMessage}>{beacon.url}</Text>
+                //                 </View>
+                //             </View>              
+                //         />          
+                //     )}
+                // />
+            // } else {
+                <View style={styles.container}>
                 <Text style={styles.welcome}>NearBee</Text>
                 <Text style={styles.instructions}>{this.state.beacons}</Text>
 
@@ -102,6 +121,8 @@ export default class App extends Component {
                 />
 
             </View>
+            
+            //}
         );
     }
 }
@@ -123,4 +144,24 @@ const styles = StyleSheet.create({
         color: '#333333',
         marginBottom: 5,
     },
+    itemBlock: {
+        flexDirection: 'row',
+        paddingBottom: 5,
+    },
+    itemImage: {
+        width: 50,
+        height: 50,
+        borderRadius: 25,
+    },
+    itemMeta: {
+        marginLeft: 10,
+        justifyContent: 'center',
+    },
+    itemName: {
+        fontSize: 20,
+    },
+    itemLastMessage: {
+        fontSize: 14,
+        color: "#111",
+    }
 });

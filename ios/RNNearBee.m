@@ -1,11 +1,27 @@
-
 #import <NearBee/NearBee-Swift.h>
 #import "RNNearBee.h"
 #import <Foundation/Foundation.h>
 
-@implementation RNNearbee
+@interface RNNearBee() <NearBeeDelegate>
 
-RCT_EXPORT_MODULE(RNNearBee);
+@property (class) NearBee *nearBee;
+@property (nonatomic, retain) NSMutableArray *beacons;
+
+@end
+
+@implementation RNNearBee
+
+static NearBee * _nearBee;
+
++ (NearBee *)nearBee {
+    return _nearBee;
+}
+
++(void)setNearBee:(NearBee *)nearBee {
+    _nearBee = nearBee;
+}
+
+RCT_EXPORT_MODULE(NearBee);
 
 - (dispatch_queue_t)methodQueue
 {
@@ -14,87 +30,82 @@ RCT_EXPORT_MODULE(RNNearBee);
 
 - (NSArray<NSString *> *)supportedEvents
 {
-    return @[@"WillChangeContent", @"DidChangeContent", @"DidChangeObject"];
+    return @[@"nearBeeNotifications", @"nearBeeError"];
 }
 
-RCT_EXPORT_METHOD(shared:(NSString *)token organization:(NSInteger)organization resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    
-    [NearBee shared:token organization:organization completion:^(NearBee * _Nullable nearBeeInstance, NSError * _Nullable error){
-        if (!error) {
-            resolve(@YES);
-        } else {
-            reject(@"no_events", @"There were no events", error);
-        }
-    }];
+RCT_EXPORT_METHOD(initialize) {
+    self.beacons = [@[] mutableCopy];
+    RNNearBee.nearBee = [NearBee initNearBee];
+    RNNearBee.nearBee.delegate = self;
+    [RNNearBee.nearBee enableBackgroundNotification:NO];
 }
 
-RCT_REMAP_METHOD(sharedInstance, sharedInstanceWithresolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    NSError *error = nil;
-    NearBee *nearBeeInstance = [NearBee sharedAndReturnError:&error];
-    if (!error) {
-        resolve(@YES);
-    } else {
-        reject(@"no_events", @"There were no events", error);
+RCT_EXPORT_METHOD(enableBackgroundNotifications:(BOOL)enabled) {
+    [RNNearBee.nearBee enableBackgroundNotification:enabled];
+}
+
+RCT_EXPORT_METHOD(stopScanning) {
+    self.beacons = [@[] mutableCopy];
+    [RNNearBee.nearBee stopScanning];
+}
+
+RCT_EXPORT_METHOD(startScanning) {
+    [RNNearBee.nearBee startScanning];
+}
+
+RCT_EXPORT_METHOD(clearNotificationCache) {
+    [RNNearBee.nearBee clearNotificationCache];
+}
+
+- (void)onBeaconsFound:(NSArray<NearBeeBeacon *> * _Nonnull)beacons {
+    [self.beacons addObjectsFromArray:beacons];
+    [self updateList:self.beacons];
+}
+
+- (void)onBeaconsLost:(NSArray<NearBeeBeacon *> * _Nonnull)beacons {
+    [self.beacons removeObjectsInArray:beacons];
+    [self updateList:self.beacons];
+}
+
+- (void)onBeaconsUpdated:(NSArray<NearBeeBeacon *> * _Nonnull)beacons {
+    [self updateList:self.beacons];
+}
+
+- (void)updateList:(NSArray<NearBeeBeacon *> * _Nonnull)beacons {
+    NSMutableArray *jsonArray = [NSMutableArray new];
+    for (NearBeeBeacon *beacon in beacons) {
+        NSMutableDictionary *beaconJson = [NSMutableDictionary new];
+        beaconJson[@"title"] = beacon.physicalWebTitle;
+        beaconJson[@"description"] = beacon.physicalWebDescription;
+        beaconJson[@"icon"] = beacon.physicalWebIcon;
+        beaconJson[@"url"] = beacon.physicalWebEddystoneURL;
+        [jsonArray addObject:beaconJson];
+    }
+    if (jsonArray.count > 0) {
+        NSDictionary *json = @{@"nearBeeNotifications":jsonArray};
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:json
+                                                           options:NSJSONWritingPrettyPrinted
+                                                             error:&error];
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        NSDictionary *mappedData = @{@"nearBeeNotifications": jsonString};
+        [self sendEventWithName:@"nearBeeNotifications" body:mappedData];
     }
 }
 
-RCT_REMAP_METHOD(startScanning, startScanningWithresolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    NSError *error = nil;
-    NearBee *nearBeeInstance = [NearBee sharedAndReturnError:&error];
-    if (!error) {
-        if (!nearBeeInstance.scanningInProgress) {
-            [nearBeeInstance startScanning];
-        }
-        resolve(@YES);
-    } else {
-        reject(@"no_events", @"There were no events", error);
-    }
+- (void)onError:(NSError * _Nonnull)error {
+    NSDictionary *json = @{@"nearBeeError":error};
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:json
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSDictionary *mappedData = @{@"nearBeeError": jsonString};
+    [self sendEventWithName:@"nearBeeError" body:mappedData];
 }
 
-RCT_REMAP_METHOD(stopScanning, stopScanningWithresolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    NSError *error = nil;
-    NearBee *nearBeeInstance = [NearBee sharedAndReturnError:&error];
-    if (!error) {
-        if (nearBeeInstance.scanningInProgress) {
-            [nearBeeInstance stopScanning];
-        }
-        resolve(@YES);
-    } else {
-        reject(@"no_events", @"There were no events", error);
-    }
-}
-
-RCT_REMAP_METHOD(ignoreCacheOnce, ignoreCacheOnceWithresolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    NSError *error = nil;
-    NearBee *nearBeeInstance = [NearBee sharedAndReturnError:&error];
-    if (!error) {
-        [nearBeeInstance ignoreCacheOnce];
-        resolve(@YES);
-    } else {
-        reject(@"no_events", @"There were no events", error);
-    }
-}
-
-RCT_EXPORT_METHOD(checkAndProcessNearbyNotification:(UNNotification * _Nonnull)notification resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    NSError *error = nil;
-    NearBee *nearBeeInstance = [NearBee sharedAndReturnError:&error];
-    if (!error) {
-        [nearBeeInstance checkAndProcessNearbyNotification:notification];
-        resolve(@YES);
-    } else {
-        reject(@"no_events", @"There were no events", error);
-    }
-}
-
-RCT_EXPORT_METHOD(displayContentOfEddystoneUrl:(NSString * _Nonnull)eddystoneUrl resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    NSError *error = nil;
-    NearBee *nearBeeInstance = [NearBee sharedAndReturnError:&error];
-    if (!error) {
-        [nearBeeInstance displayContentOfEddystoneUrl:eddystoneUrl];
-        resolve(@YES);
-    } else {
-        reject(@"no_events", @"There were no events", error);
-    }
++ (BOOL)checkAndProcessNearbyNotification:(UNNotification *)notification {
+    return [RNNearBee.nearBee checkAndProcessNearbyNotification:notification];
 }
 
 @end
+
