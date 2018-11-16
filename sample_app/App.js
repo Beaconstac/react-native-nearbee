@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button, DeviceEventEmitter} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button, NativeEventEmitter} from 'react-native';
 import NearBee from './nearbee_sdk/NearBee';
 
 const eventBeacons = "nearBeeNotifications";
@@ -27,8 +27,9 @@ export default class App extends Component {
             beacons: "No beacons in range"
         };
 
-        DeviceEventEmitter.addListener(eventBeacons, this.onBeaconsFound);
-        DeviceEventEmitter.addListener(eventError, this.onError);
+        const eventEmitter = new NativeEventEmitter(NearBee);
+        eventEmitter.addListener(eventBeacons, this.onBeaconsFound);
+        eventEmitter.addListener(eventError, this.onError);
     }
 
     onBackgroundChange = () => {
