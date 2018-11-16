@@ -1,0 +1,120 @@
+PODS:
+  - boost-for-react-native (1.63.0)
+  - DoubleConversion (1.1.6)
+  - EddystoneScanner (1.1.8)
+  - Folly (2016.10.31.00):
+    - boost-for-react-native
+    - DoubleConversion
+    - glog
+  - glog (0.3.5)
+  - NearBee (1.1.0):
+    - EddystoneScanner
+    - Socket.IO-Client-Swift
+  - React/Core (0.57.4):
+    - yoga (= 0.57.4.React)
+  - React/CxxBridge (0.57.4):
+    - Folly (= 2016.10.31.00)
+    - React/Core
+    - React/cxxreact
+  - React/cxxreact (0.57.4):
+    - boost-for-react-native (= 1.63.0)
+    - Folly (= 2016.10.31.00)
+    - React/jschelpers
+    - React/jsinspector
+  - React/DevSupport (0.57.4):
+    - React/Core
+    - React/RCTWebSocket
+  - React/fishhook (0.57.4)
+  - React/jschelpers (0.57.4):
+    - Folly (= 2016.10.31.00)
+    - React/PrivateDatabase
+  - React/jsinspector (0.57.4)
+  - React/PrivateDatabase (0.57.4)
+  - React/RCTAnimation (0.57.4):
+    - React/Core
+  - React/RCTBlob (0.57.4):
+    - React/Core
+  - React/RCTImage (0.57.4):
+    - React/Core
+    - React/RCTNetwork
+  - React/RCTLinkingIOS (0.57.4):
+    - React/Core
+  - React/RCTNetwork (0.57.4):
+    - React/Core
+  - React/RCTText (0.57.4):
+    - React/Core
+  - React/RCTWebSocket (0.57.4):
+    - React/Core
+    - React/fishhook
+    - React/RCTBlob
+  - RNNearBee (1.0.0):
+    - DoubleConversion (= 1.1.6)
+    - Folly (= 2016.10.31.00)
+    - glog (= 0.3.5)
+    - NearBee
+    - React/Core (= 0.57.4)
+    - React/CxxBridge (= 0.57.4)
+    - React/RCTAnimation (= 0.57.4)
+    - React/RCTImage (= 0.57.4)
+    - React/RCTLinkingIOS (= 0.57.4)
+    - React/RCTNetwork (= 0.57.4)
+    - React/RCTText (= 0.57.4)
+    - yoga (= 0.57.4.React)
+  - Socket.IO-Client-Swift (13.3.1):
+    - Starscream (~> 3.0.2)
+  - Starscream (3.0.6)
+  - yoga (0.57.4.React)
+
+DEPENDENCIES:
+  - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
+  - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
+  - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - NearBee
+  - React/Core (from `../node_modules/react-native`)
+  - React/CxxBridge (from `../node_modules/react-native`)
+  - React/DevSupport (from `../node_modules/react-native`)
+  - React/RCTAnimation (from `../node_modules/react-native`)
+  - React/RCTNetwork (from `../node_modules/react-native`)
+  - React/RCTText (from `../node_modules/react-native`)
+  - React/RCTWebSocket (from `../node_modules/react-native`)
+  - RNNearBee (from `../node_modules/react-native-nearbee`)
+  - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - boost-for-react-native
+    - EddystoneScanner
+    - NearBee
+    - Socket.IO-Client-Swift
+    - Starscream
+
+EXTERNAL SOURCES:
+  DoubleConversion:
+    :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
+  Folly:
+    :podspec: "../node_modules/react-native/third-party-podspecs/Folly.podspec"
+  glog:
+    :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
+  React:
+    :path: "../node_modules/react-native"
+  RNNearBee:
+    :path: "../node_modules/react-native-nearbee"
+  yoga:
+    :path: "../node_modules/react-native/ReactCommon/yoga"
+
+SPEC CHECKSUMS:
+  boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
+  DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
+  EddystoneScanner: b6651d5524ef31d6856cdc75b7b9212b857e9e64
+  Folly: c89ac2d5c6ab169cd7397ef27485c44f35f742c7
+  glog: e8acf0ebbf99759d3ff18c86c292a5898282dcde
+  NearBee: 82e0bc92726c64d52b4fd309a51a7b46066812b7
+  React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
+  RNNearBee: 5948b60b1c5af38d44e5d97793c432b0a9b11de2
+  Socket.IO-Client-Swift: 79f8f85fa44881838175a20f9bd2c32bef2c9d37
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
+  yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
+
+PODFILE CHECKSUM: 9397bb2789742e2bfa9569d8ca9a0073e6f90db4
+
+COCOAPODS: 1.5.3

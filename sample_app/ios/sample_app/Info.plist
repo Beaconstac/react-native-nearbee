@@ -2,8 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>co.nearbee.api_key</key>
+	<string>08ddda7aabcbecfa54b29f6d032d7d289eb241b5</string>
+	<key>co.nearbee.organization_id</key>
+	<string>1697</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>CFBundleDisplayName</key>
 	<string>sample_app</string>
 	<key>CFBundleExecutable</key>

@@ -10,7 +10,7 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-#import <NearBee/NearBee-Swift.h>
+#import <RNNearBee/RNNearBee.h>
 
 @interface AppDelegate() <UNUserNotificationCenterDelegate>
 
@@ -55,8 +55,7 @@
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler
 {
-  NSError *error = nil;
-  BOOL isNearBeeNotificaiton = [[NearBee sharedAndReturnError:&error] checkAndProcessNearbyNotification:response.notification];
+  BOOL isNearBeeNotificaiton = [RNNearBee checkAndProcessNearbyNotification:response.notification];
   if (!isNearBeeNotificaiton) {
     // You should handle the notification
   }
