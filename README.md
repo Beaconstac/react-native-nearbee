@@ -13,7 +13,7 @@ npm install react-native-nearbee --save
 react-native link
 ```
 
-### Add API Key
+### Pre-requisites
 
 #### Android
 
@@ -45,6 +45,17 @@ Add your API key and Orgnization ID to the `Info.plist` as follows
 <key>co.nearbee.organization_id</key>
 <string>123</string>
 ``` 
+
+Add the NSLocationAlwaysUsageDescription, NSLocationAlwaysAndWhenInUsageDescription, NSBluetoothPeripheralUsageDescription to `Info.plist`
+
+```xml
+<key>NSLocationAlwaysUsageDescription</key>
+<string>To scan for beacons and show the offers around you</string>
+<key>NSLocationAlwaysUsageDescription</key>
+<string>To scan for beacons and show the offers around you</string>
+<key>NSLocationAlwaysUsageDescription</key>
+<string>To scan for beacons and show the offers around you</string>
+```
 
 To recieve notifications in the background, you must first enable the `Location Updates` and `Uses Bluetooth LE accessories` Background Modes in the Capabilities tab of your app target
 
