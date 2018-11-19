@@ -37,10 +37,25 @@ Add your API key and Orgnization ID to the `AndroidManifest.xml` as follows
 
 #### iOS
 
+Add your API key and Orgnization ID to the `Info.plist` as follows
+
+```xml
+<key>co.nearbee.api_key</key>
+<string>MY_DEV_TOKEN<string>
+<key>co.nearbee.organization_id</key>
+<string>123</string>
+``` 
+
+To recieve notifications in the background, you must first enable the `Location Updates` and `Uses Bluetooth LE accessories` Background Modes in the Capabilities tab of your app target
+
+#### Pods
+1. If you are using Pods you need to run the `pod install`.
+
+#### Manual Installation
 1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
 2. Go to `node_modules` ➜ `react-native-nearbee` and add `RNNearbee.xcodeproj`
 3. In XCode, in the project navigator, select your project. Add `libRNNearbee.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4. Run your project (`Cmd+R`)<
+4. Run your project (`Cmd+R`)
 
 
 ## Usage
