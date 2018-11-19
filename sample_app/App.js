@@ -7,7 +7,8 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button, NativeEventEmitter, FlatList, Image, ListItem} from 'react-native';
+import {Button, FlatList, NativeEventEmitter, StyleSheet, View, Text, Image} from 'react-native';
+import {ListItem, Icon} from 'react-native-elements'
 import NearBee from './nearbee_sdk/NearBee';
 
 const eventBeacons = "nearBeeNotifications";
@@ -48,13 +49,15 @@ export default class App extends Component {
     };
 
     onBeaconsFound = (event) => {
+        let beacons = [];
         let beacJson = JSON.parse(event.nearBeeNotifications);
-        let beacons = []
         for (let index = 0; index < beacJson.nearBeeNotifications.length; index++) {
             const element = beacJson.nearBeeNotifications[index];
+            element['key'] = element.url;
             beacons.push(element);
         }
         this.setState({beacons});
+        console.log(this.state.beacons);
     };
 
     onError = (event) => {
@@ -77,53 +80,41 @@ export default class App extends Component {
         this.scanning = !this.scanning;
     };
 
+    componentWillMount(){
+        this.scanToggle();
+    }
+
     render() {
-        const beaconCount = this.state.beacons.length;
         return (
-            // if (beaconCount > 0) {
+            <View>
                 <FlatList
                     data={this.state.beacons}
-                    renderItem={({ beacon }) => (
-                        <ListItem>
-                            <View style={styles.itemBlock}>
-                                const image = beacon.icon != null ? beacon.icon : './link.png'
-                                <Image source={{uri: image}} style={styles.itemImage}/>
-                                <View style={styles.itemMeta}>
-                                    <Text style={styles.itemName}>{beacon.title}</Text>
-                                    <Text style={styles.itemLastMessage}>{beacon.description}</Text>
-                                    <Text style={styles.itemLastMessage}>{beacon.url}</Text>
-                                </View>
-                            </View>              
-                        </ListItem>          
-                   )}
+                    renderItem={({item}) =>
+                        <ListItem
+                            title={item.title}
+                            subtitle={item.description}
+                            hideChevron
+                            leftIcon={<Image source={{uri: item.icon}}
+                                           style={{ height: 60, width: 60 }} />}
+                        />
+                    }
                 />
-            // } else {
-            //     } else {
-            //     <View style={styles.container}>
-            //     <Text style={styles.welcome}>NearBee</Text>
-            //     <Text style={styles.instructions}>{this.state.beacons}</Text>
-
-            //     <Button style={styles.buttonNB}
-            //             onPress={() => {
-            //                 this.onBackgroundChange();
-            //             }}
-            //             color="#374668"
-            //             title={this.state.bgButtonText}
-            //     />
-
-            //     <Button buttonStyle={styles.buttonNB}
-            //             onPress={() => {
-            //                 this.scanToggle();
-            //             }}
-            //             color="#374668"
-            //             title={this.state.scanText}
-            //     />
-
-            // </View>
-            // }
+            </View>
         );
     }
 }
+
+const list = [
+    {
+        name: 'Amy Farha',
+        subtitle: 'Vice President'
+    },
+    {
+        name: 'Chris Jackson',
+        avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+        subtitle: 'Vice Chairman'
+    },
+];
 
 const styles = StyleSheet.create({
     container: {
