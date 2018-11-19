@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button, NativeEventEmitter, FlatList} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button, NativeEventEmitter, FlatList, Image, ListItem} from 'react-native';
 import NearBee from './nearbee_sdk/NearBee';
 
 const eventBeacons = "nearBeeNotifications";
@@ -49,15 +49,12 @@ export default class App extends Component {
 
     onBeaconsFound = (event) => {
         let beacJson = JSON.parse(event.nearBeeNotifications);
-        let beacons = [];
+        let beacons = []
         for (let index = 0; index < beacJson.nearBeeNotifications.length; index++) {
             const element = beacJson.nearBeeNotifications[index];
             beacons.push(element);
         }
-        this.setState({
-            beaconString: "",
-            beacons: beacJson.nearBeeNotifications
-        });
+        this.setState({beacons});
     };
 
     onError = (event) => {
@@ -81,48 +78,49 @@ export default class App extends Component {
     };
 
     render() {
+        const beaconCount = this.state.beacons.length;
         return (
-            // if (this.state.beacons.length > 0) {
-                // <FlatList 
-                //     keyExtractor={this._keyExtractor}
-                //     data={this.state.beacons}
-                //     renderItem={({ beacon }) => ( 
-                //         <ListItem
-                //             <View style={styles.itemBlock}>
-                //                 <Image source={{uri: beacon.icon}} style={styles.itemImage}/>
-                //                 <View style={styles.itemMeta}>
-                //                     <Text style={styles.itemName}>{beacon.title}</Text>
-                //                     <Text style={styles.itemLastMessage}>{beacon.description}</Text>
-                //                     <Text style={styles.itemLastMessage}>{beacon.url}</Text>
-                //                 </View>
-                //             </View>              
-                //         />          
-                //     )}
-                // />
+            // if (beaconCount > 0) {
+                <FlatList
+                    data={this.state.beacons}
+                    renderItem={({ beacon }) => (
+                        <ListItem>
+                            <View style={styles.itemBlock}>
+                                const image = beacon.icon != null ? beacon.icon : './link.png'
+                                <Image source={{uri: image}} style={styles.itemImage}/>
+                                <View style={styles.itemMeta}>
+                                    <Text style={styles.itemName}>{beacon.title}</Text>
+                                    <Text style={styles.itemLastMessage}>{beacon.description}</Text>
+                                    <Text style={styles.itemLastMessage}>{beacon.url}</Text>
+                                </View>
+                            </View>              
+                        </ListItem>          
+                   )}
+                />
             // } else {
-                <View style={styles.container}>
-                <Text style={styles.welcome}>NearBee</Text>
-                <Text style={styles.instructions}>{this.state.beacons}</Text>
+            //     } else {
+            //     <View style={styles.container}>
+            //     <Text style={styles.welcome}>NearBee</Text>
+            //     <Text style={styles.instructions}>{this.state.beacons}</Text>
 
-                <Button style={styles.buttonNB}
-                        onPress={() => {
-                            this.onBackgroundChange();
-                        }}
-                        color="#374668"
-                        title={this.state.bgButtonText}
-                />
+            //     <Button style={styles.buttonNB}
+            //             onPress={() => {
+            //                 this.onBackgroundChange();
+            //             }}
+            //             color="#374668"
+            //             title={this.state.bgButtonText}
+            //     />
 
-                <Button buttonStyle={styles.buttonNB}
-                        onPress={() => {
-                            this.scanToggle();
-                        }}
-                        color="#374668"
-                        title={this.state.scanText}
-                />
+            //     <Button buttonStyle={styles.buttonNB}
+            //             onPress={() => {
+            //                 this.scanToggle();
+            //             }}
+            //             color="#374668"
+            //             title={this.state.scanText}
+            //     />
 
-            </View>
-            
-            //}
+            // </View>
+            // }
         );
     }
 }
