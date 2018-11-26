@@ -7,19 +7,21 @@
  */
 
 import React, {Component} from 'react';
-import {Button, FlatList, NativeEventEmitter, StyleSheet, View, Text, Image} from 'react-native';
-import {ListItem, Icon} from 'react-native-elements'
+import {FlatList, Image, NativeEventEmitter, Platform, StyleSheet, View} from 'react-native';
+import {ListItem} from 'react-native-elements'
 import NearBee from './nearbee_sdk/NearBee';
+import Permissions from 'react-native-permissions'
+
 
 const eventBeacons = "nearBeeNotifications";
 const eventError = "nearBeeError";
 
 export default class App extends Component {
     constructor() {
-        NearBee.initialize();
         super();
         this.bgEnabled = false;
         this.scanning = false;
+        this.checkPermissions();
 
         this.state = {
             bgButtonText: "Enable BG notification",
@@ -27,11 +29,11 @@ export default class App extends Component {
             beaconString: "No beacons in range",
             beacons: [],
             loading: false,
+            locationPermission: false,
+            bluetoothPermission: false
         };
 
-        const eventEmitter = new NativeEventEmitter(NearBee);
-        eventEmitter.addListener(eventBeacons, this.onBeaconsFound);
-        eventEmitter.addListener(eventError, this.onError);
+
     }
 
     onBackgroundChange = () => {
@@ -57,7 +59,6 @@ export default class App extends Component {
             beacons.push(element);
         }
         this.setState({beacons});
-        console.log(this.state.beacons);
     };
 
     onError = (event) => {
@@ -65,23 +66,83 @@ export default class App extends Component {
         console.error(error);
     };
 
-    scanToggle = () => {
-        if (this.scanning === true) {
-            this.setState({
-                scanText: "Start scanning",
-            });
-            NearBee.stopScanning();
-        } else {
-            this.setState({
-                scanText: "Stop scanning",
-            });
-            NearBee.startScanning();
-        }
-        this.scanning = !this.scanning;
-    };
 
-    componentWillMount(){
-        this.scanToggle();
+    initNearBee() {
+        if (!this.state.locationPermission) {
+            return;
+        }
+        NearBee.initialize();
+        const eventEmitter = new NativeEventEmitter(NearBee);
+        eventEmitter.addListener(eventBeacons, this.onBeaconsFound);
+        eventEmitter.addListener(eventError, this.onError);
+        this.startScan();
+    }
+
+    async requestLocationPermission() {
+        Permissions.request('location').then(response => {
+            // Returns once the user has chosen to 'allow' or to 'not allow' access
+            // Response is one of: 'authorized', 'denied', 'restricted', or 'undetermined'
+            if (response === 'authorized') {
+                this.checkPermissions()
+            }
+        })
+    }
+
+    async requestBluetoothPermission() {
+        Permissions.request('bluetooth').then(response => {
+            // Returns once the user has chosen to 'allow' or to 'not allow' access
+            // Response is one of: 'authorized', 'denied', 'restricted', or 'undetermined'
+            if (response === 'authorized') {
+                this.checkPermissions()
+            }
+        })
+    }
+
+    async checkPermissions() {
+        const permissionRequests = ['location'];
+        const isIOS = Platform.OS === 'ios';
+        if (isIOS) {
+            permissionRequests.push('bluetooth');
+        }
+        Permissions.checkMultiple(permissionRequests).then(response => {
+            //response is an object mapping type to permission
+
+            if (response.location === 'authorized') {
+                this.setState({
+                    locationPermission: true,
+                });
+            }
+            if (isIOS) {
+                if (response.bluetooth === 'authorized') {
+                    this.setState({
+                        bluetoothPermission: true
+                    });
+                }
+            } else {
+                this.setState({
+                    bluetoothPermission: true
+                })
+            }
+
+            // Checking all the states
+            if (!isIOS && !this.state.locationPermission) {
+                this.requestLocationPermission();
+            } else if (!this.state.bluetoothPermission) {
+                this.requestBluetoothPermission();
+            } else {
+                this.initNearBee();
+            }
+        });
+    }
+
+    startScan() {
+        NearBee.startScanning();
+        this.scanning = true;
+    }
+
+    stopScan() {
+        NearBee.stopScannig();
+        this.scanning = false;
     }
 
     render() {
@@ -95,13 +156,14 @@ export default class App extends Component {
                             subtitle={item.description}
                             hideChevron
                             leftIcon={<Image source={{uri: item.icon}}
-                                           style={{ height: 60, width: 60 }} />}
+                                             style={{height: 60, width: 60}}/>}
                         />
                     }
                 />
             </View>
         );
     }
+
 }
 
 const list = [
