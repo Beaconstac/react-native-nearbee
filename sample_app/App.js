@@ -163,6 +163,10 @@ export default class App extends Component {
         this.scanning = false;
     }
 
+    launchUrl(url) {
+        NearBee.launchUrl(url);
+    }
+
     render() {
         return (
             <View style={{flex: 1, backgroundColor: '#ffffff'}}>
@@ -192,14 +196,13 @@ export default class App extends Component {
                                     title={item.title}
                                     subtitle={item.description}
                                     hideChevron
+                                    onPress={() =>{this.launchUrl(item.url)}}
                                     leftIcon={<Image source={{uri: item.icon}}
                                                      style={{height: 60, width: 60}}/>}
                                 />
                             }
                         />
                     </View>}
-
-
             </View>
         );
     }

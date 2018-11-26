@@ -19,6 +19,7 @@ import co.nearbee.NearBee;
 import co.nearbee.NearBeeBeacon;
 import co.nearbee.NearBeeException;
 import co.nearbee.NearBeeListener;
+import co.nearbee.utils.Util;
 
 public class NearBeeModule extends ReactContextBaseJavaModule implements NearBeeListener {
 
@@ -73,6 +74,11 @@ public class NearBeeModule extends ReactContextBaseJavaModule implements NearBee
         initialize();
         nearBee.clearNotificationCache();
         Log.d("RNNearbee", "Cleared notification cache");
+    }
+
+    @ReactMethod
+    public void launchUrl(String url) {
+        Util.startChromeTabs(getReactApplicationContext(), url, true);
     }
 
     @Override
