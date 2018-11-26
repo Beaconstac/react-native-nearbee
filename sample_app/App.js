@@ -128,7 +128,6 @@ export default class App extends Component {
         }
         Permissions.checkMultiple(permissionRequests).then(response => {
             //response is an object mapping type to permission
-
             if (response.location === 'authorized') {
                 this.setState({
                     locationPermission: true,
