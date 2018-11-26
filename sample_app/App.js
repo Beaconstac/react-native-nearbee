@@ -21,7 +21,6 @@ export default class App extends Component {
         super();
         this.bgEnabled = false;
         this.scanning = false;
-        this.checkPermissions();
 
         this.state = {
             bgButtonText: "Enable BG notification",
@@ -36,6 +35,14 @@ export default class App extends Component {
         };
 
 
+    }
+
+    componentWillMount() {
+        this.checkPermissions();
+    }
+
+    componentWillUnmount() {
+        this.stopScan();
     }
 
     onBackgroundChange = () => {
@@ -159,7 +166,7 @@ export default class App extends Component {
     }
 
     stopScan() {
-        NearBee.stopScannig();
+        NearBee.stopScanning();
         this.scanning = false;
     }
 
@@ -196,7 +203,9 @@ export default class App extends Component {
                                     title={item.title}
                                     subtitle={item.description}
                                     hideChevron
-                                    onPress={() =>{this.launchUrl(item.url)}}
+                                    onPress={() => {
+                                        this.launchUrl(item.url)
+                                    }}
                                     leftIcon={<Image source={{uri: item.icon}}
                                                      style={{height: 60, width: 60}}/>}
                                 />

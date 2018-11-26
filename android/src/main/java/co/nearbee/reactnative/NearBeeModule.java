@@ -78,7 +78,9 @@ public class NearBeeModule extends ReactContextBaseJavaModule implements NearBee
 
     @ReactMethod
     public void launchUrl(String url) {
+        initialize();
         Util.startChromeTabs(getReactApplicationContext(), url, true);
+        Log.d("RNNearbee", "Launching url");
     }
 
     @Override
