@@ -57,6 +57,10 @@ RCT_EXPORT_METHOD(clearNotificationCache) {
     [RNNearBee.nearBee clearNotificationCache];
 }
 
+RCT_EXPORT_METHOD(launchUrl:(NSString *)url) {
+    [RNNearBee.nearBee displayContentOfEddystoneUrl:url];
+}
+
 - (void)onBeaconsFound:(NSArray<NearBeeBeacon *> * _Nonnull)beacons {
     [self.beacons addObjectsFromArray:beacons];
     [self updateList:self.beacons];
