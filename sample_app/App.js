@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {FlatList, Image, NativeEventEmitter, Platform, StyleSheet, View} from 'react-native';
+import {ActivityIndicator, FlatList, Image, NativeEventEmitter, Platform, StyleSheet, Text, View} from 'react-native';
 import {ListItem} from 'react-native-elements'
 import NearBee from './nearbee_sdk/NearBee';
 import Permissions from 'react-native-permissions'
@@ -28,9 +28,11 @@ export default class App extends Component {
             scanText: "Start scanning",
             beaconString: "No beacons in range",
             beacons: [],
-            loading: false,
+            loading: true,
             locationPermission: false,
-            bluetoothPermission: false
+            bluetoothPermission: false,
+            noBeaconError: false,
+            scanStartTime: null
         };
 
 
@@ -59,13 +61,26 @@ export default class App extends Component {
             beacons.push(element);
         }
         this.setState({beacons});
+        if (beacons.length > 0) {
+            this.setState({
+                noBeaconError: false,
+                loading: false,
+                scanStartTime: new Date().getTime()
+            });
+        } else {
+            if (new Date().getTime() - this.state.scanStartTime > 3000) {
+                this.setState({
+                    noBeaconError: true,
+                    loading: true
+                });
+            }
+        }
     };
 
     onError = (event) => {
         let error = event.nearBeeError;
         console.error(error);
     };
-
 
     initNearBee() {
         if (!this.state.locationPermission) {
@@ -79,7 +94,7 @@ export default class App extends Component {
     }
 
     async requestLocationPermission() {
-        Permissions.request('location').then(response => {
+        Permissions.request('location', 'always').then(response => {
             // Returns once the user has chosen to 'allow' or to 'not allow' access
             // Response is one of: 'authorized', 'denied', 'restricted', or 'undetermined'
             if (response === 'authorized') {
@@ -138,6 +153,9 @@ export default class App extends Component {
     startScan() {
         NearBee.startScanning();
         this.scanning = true;
+        this.setState({
+            scanStartTime: new Date().getTime()
+        });
     }
 
     stopScan() {
@@ -147,19 +165,41 @@ export default class App extends Component {
 
     render() {
         return (
-            <View>
-                <FlatList
-                    data={this.state.beacons}
-                    renderItem={({item}) =>
-                        <ListItem
-                            title={item.title}
-                            subtitle={item.description}
-                            hideChevron
-                            leftIcon={<Image source={{uri: item.icon}}
-                                             style={{height: 60, width: 60}}/>}
+            <View style={{flex: 1, backgroundColor: '#ffffff'}}>
+                {this.state.loading ?
+                    <View style={[styles.flexJustifyCenter, styles.alignItemsCenter]}>
+                        <Image resizeMode='contain' source={require('./no_beacon_error.png')}
+                               style={{height: '70%', width: '70%'}}/>
+                        {this.state.noBeaconError ?
+                            <View style={styles.alignItemsCenter}>
+                                <Text style={styles.noBeaconMessageTitle}>No beacons nearby</Text>
+                                <Text style={styles.loadingMessageSubtitle}>Links will appear when beacon comes in
+                                    range</Text>
+                            </View> :
+                            <View style={styles.alignItemsCenter}>
+                                <Text style={styles.loadingMessageTitle}>Looking for nearby beacons</Text>
+                                <Text style={styles.loadingMessageSubtitle}>Links will appear when beacon comes in
+                                    range</Text>
+                            </View>
+                        }
+                        <ActivityIndicator style={{marginTop: 20}} size="small" color="#0000ff"/>
+                    </View> :
+                    <View>
+                        <FlatList
+                            data={this.state.beacons}
+                            renderItem={({item}) =>
+                                <ListItem
+                                    title={item.title}
+                                    subtitle={item.description}
+                                    hideChevron
+                                    leftIcon={<Image source={{uri: item.icon}}
+                                                     style={{height: 60, width: 60}}/>}
+                                />
+                            }
                         />
-                    }
-                />
+                    </View>}
+
+
             </View>
         );
     }
@@ -214,5 +254,23 @@ const styles = StyleSheet.create({
     itemLastMessage: {
         fontSize: 14,
         color: "#111",
+    },
+    flexJustifyCenter: {
+        flex: 1,
+        justifyContent: 'center'
+    },
+    alignItemsCenter: {
+        alignItems: 'center'
+    },
+    loadingMessageTitle: {
+        fontSize: 16,
+        color: '#FBAA19'
+    },
+    noBeaconMessageTitle: {
+        fontSize: 16,
+        color: 'red'
+    },
+    loadingMessageSubtitle: {
+        fontSize: 12,
     }
 });
