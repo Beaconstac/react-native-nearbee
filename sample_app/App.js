@@ -146,7 +146,7 @@ export default class App extends Component {
             }
 
             // Checking all the states
-            if (!isIOS && !this.state.locationPermission) {
+            if (!this.state.locationPermission) {
                 this.requestLocationPermission();
             } else if (!this.state.bluetoothPermission) {
                 this.requestBluetoothPermission();

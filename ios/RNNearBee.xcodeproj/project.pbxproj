@@ -23,7 +23,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		134814201AA4EA6300B7C361 /* libRNNearbee.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNNearbee.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		134814201AA4EA6300B7C361 /* libRNNearBee.temp_caseinsensitive_rename.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNNearBee.temp_caseinsensitive_rename.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3E7B5881CC2AC0600A0062D /* RNNearBee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNNearBee.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNNearBee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNNearBee.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -42,7 +42,7 @@
 		134814211AA4EA7D00B7C361 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				134814201AA4EA6300B7C361 /* libRNNearbee.a */,
+				134814201AA4EA6300B7C361 /* libRNNearBee.temp_caseinsensitive_rename.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -59,9 +59,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		58B511DA1A9E6C8500147676 /* RNNearbee */ = {
+		58B511DA1A9E6C8500147676 /* RNNearBee */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNNearbee" */;
+			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNNearBee" */;
 			buildPhases = (
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
@@ -71,9 +71,9 @@
 			);
 			dependencies = (
 			);
-			name = RNNearbee;
+			name = RNNearBee;
 			productName = RCTDataManager;
-			productReference = 134814201AA4EA6300B7C361 /* libRNNearbee.a */;
+			productReference = 134814201AA4EA6300B7C361 /* libRNNearBee.temp_caseinsensitive_rename.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +102,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				58B511DA1A9E6C8500147676 /* RNNearbee */,
+				58B511DA1A9E6C8500147676 /* RNNearBee */,
 			);
 		};
 /* End PBXProject section */
@@ -213,7 +213,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = RNNearbee;
+				PRODUCT_NAME = RNNearBee.temp_caseinsensitive_rename;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -231,7 +231,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = RNNearbee;
+				PRODUCT_NAME = RNNearBee.temp_caseinsensitive_rename;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -248,7 +248,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNNearbee" */ = {
+		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNNearBee" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58B511F01A9E6C8500147676 /* Debug */,

@@ -8,8 +8,6 @@
 	<string>1697</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
 	<key>CFBundleDisplayName</key>
 	<string>sample_app</string>
 	<key>CFBundleExecutable</key>
@@ -43,28 +41,35 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>bluetooth-central</string>
-		<string>location</string>
-	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>armv7</string>
-	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>To scan beacons in the proximity of the device and show the content</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Range Beacons</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Range Beacons</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Range Beacons</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Range Beacons</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Range Beacons</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>bluetooth-central</string>
+		<string>location</string>
+	</array>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+		<string>bluetooth-le</string>
+	</array>
 </dict>
 </plist>
