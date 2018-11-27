@@ -1,6 +1,6 @@
 {
   "name": "react-native-nearbee",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "NearBee SDK for your react native applications",
   "main": "index.js",
   "scripts": {
