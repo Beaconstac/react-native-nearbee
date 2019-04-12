@@ -32,6 +32,6 @@ target 'sample_app' do
 
   pod 'RNNearBee', :path => '../node_modules/react-native-nearbee'
 
-  pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions'
+  pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions-ble-fix'
 
 end

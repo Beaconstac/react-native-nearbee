@@ -49,7 +49,7 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - ReactNativePermissions (1.1.1):
+  - ReactNativePermissions (1.1.8):
     - React
   - RNNearBee (1.0.8):
     - DoubleConversion (= 1.1.6)
@@ -81,7 +81,7 @@ DEPENDENCIES:
   - React/RCTNetwork (from `../node_modules/react-native`)
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
-  - ReactNativePermissions (from `../node_modules/react-native-permissions`)
+  - ReactNativePermissions (from `../node_modules/react-native-permissions-ble-fix`)
   - RNNearBee (from `../node_modules/react-native-nearbee`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -103,7 +103,7 @@ EXTERNAL SOURCES:
   React:
     :path: "../node_modules/react-native"
   ReactNativePermissions:
-    :path: "../node_modules/react-native-permissions"
+    :path: "../node_modules/react-native-permissions-ble-fix"
   RNNearBee:
     :path: "../node_modules/react-native-nearbee"
   yoga:
@@ -117,12 +117,12 @@ SPEC CHECKSUMS:
   glog: e8acf0ebbf99759d3ff18c86c292a5898282dcde
   NearBee: 1cbcd8acfab4864ea9f3604398def2a18cfd8830
   React: 1f4ca35c4aeac2b47e42e8be98bb9188f48fba84
-  ReactNativePermissions: 2e324bb3baf12702e3ec27f76c8ae1158fa69fc6
+  ReactNativePermissions: fee54e4deb5cb2fd1f8c20549298577178ee6c18
   RNNearBee: ef690fcc33e8ef1913fe1d413430344cd673f7f5
   Socket.IO-Client-Swift: c039a808195d22a7192962841b8c035cb61ea49e
   Starscream: 08172b481e145289c4930cb567230fb55897cfa4
   yoga: ac0f4c6ff31ac05bad1bd166fec5204c19de0277
 
-PODFILE CHECKSUM: b30c8ecbaa5ef6aa54d507845b9808ca7a929f31
+PODFILE CHECKSUM: e4f6313c366158ae62d5e0c989c5d7891b44c705
 
 COCOAPODS: 1.6.1
