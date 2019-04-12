@@ -10,7 +10,7 @@ import React, {Component} from 'react';
 import {ActivityIndicator, FlatList, Image, NativeEventEmitter, Platform, StyleSheet, Text, View} from 'react-native';
 import {ListItem} from 'react-native-elements'
 import NearBee from './nearbee_sdk/NearBee';
-import Permissions from 'react-native-permissions'
+import Permissions from 'react-native-permissions-ble-fix'
 
 
 const eventBeacons = "nearBeeNotifications";
