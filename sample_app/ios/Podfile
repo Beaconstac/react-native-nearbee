@@ -10,7 +10,6 @@ glog_spec_path = File.join(react_path, 'third-party-podspecs/glog.podspec')
 double_conversion_spec_path = File.join(react_path, 'third-party-podspecs/DoubleConversion.podspec')
 
 target 'sample_app' do
-  use_frameworks!
   inherit! :search_paths
 
   pod 'NearBee'
