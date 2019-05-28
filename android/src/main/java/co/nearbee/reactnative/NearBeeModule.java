@@ -16,12 +16,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import co.nearbee.NearBee;
-import co.nearbee.NearBeeBeacon;
+import co.nearbee.models.NearBeacon;
+import co.nearbee.models.ProximityAttachment;
+import co.nearbee.models.BeaconAttachment;
 import co.nearbee.NearBeeException;
-import co.nearbee.NearBeeListener;
+import co.nearbee.NearBeaconListener;
 import co.nearbee.utils.Util;
 
-public class NearBeeModule extends ReactContextBaseJavaModule implements NearBeeListener {
+public class NearBeeModule extends ReactContextBaseJavaModule implements NearBeaconListener {
 
     public static final String EVENT_NOTIFICATION = "nearBeeNotifications";
     public static final String EVENT_ERROR = "nearBeeError";
@@ -41,7 +43,7 @@ public class NearBeeModule extends ReactContextBaseJavaModule implements NearBee
     public void initialize() {
         if (nearBee == null) {
             nearBee = new NearBee.Builder(getReactApplicationContext())
-                    .setBackgroundNotificationsEnabled(false)
+                    .setBackgroundNotificationsEnabled(true)
                     .build();
             Log.d("RNNearbee", "Init");
         }
@@ -84,15 +86,22 @@ public class NearBeeModule extends ReactContextBaseJavaModule implements NearBee
     }
 
     @Override
-    public void onUpdate(ArrayList<NearBeeBeacon> beaconsInRange) {
+    public void onUpdate(ArrayList<NearBeacon> beaconsInRange) {
         JSONArray jsonArray = new JSONArray();
         try {
-            for (NearBeeBeacon beacon : beaconsInRange) {
+            for (NearBeacon beacon : beaconsInRange) {
                 JSONObject beaconJson = new JSONObject();
-                beaconJson.put("title", beacon.getNotification().getTitle());
-                beaconJson.put("description", beacon.getNotification().getDescription());
-                beaconJson.put("icon", beacon.getNotification().getIcon());
-                beaconJson.put("url", beacon.getNotification().getEddystoneURL());
+                BeaconAttachment attachment = beacon.getBestAvailableAttachment(getReactApplicationContext());
+                beaconJson.put("eddystoneUID", beacon.getEddystoneUID());
+                beaconJson.put("title", attachment.getTitle());
+                beaconJson.put("description", attachment.getDescription());
+                beaconJson.put("icon", attachment.getIconURL());
+                beaconJson.put("url", attachment.getUrl());
+                if (attachment.getClass().isAssignableFrom(ProximityAttachment.class)) {
+                    ProximityAttachment pa = (ProximityAttachment) attachment;
+                    beaconJson.put("bannerType", pa.getBannerType());
+                    beaconJson.put("bannerImageUrl", pa.getBannerImageURL());
+                }
                 jsonArray.put(beaconJson);
             }
             JSONObject jsonObject = new JSONObject();
@@ -106,12 +115,12 @@ public class NearBeeModule extends ReactContextBaseJavaModule implements NearBee
     }
 
     @Override
-    public void onBeaconLost(ArrayList<NearBeeBeacon> lost) {
+    public void onBeaconLost(ArrayList<NearBeacon> lost) {
         //
     }
 
     @Override
-    public void onBeaconFound(ArrayList<NearBeeBeacon> found) {
+    public void onBeaconFound(ArrayList<NearBeacon> found) {
         //
     }
 
