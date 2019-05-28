@@ -183,7 +183,7 @@ public class MyNotificationManager extends NotificationManager {
         // This intent is for handling individual notification click
         // Pass the intent of the activity that you want to be opened on click
         if (nearBeacon.getBusiness() != null) {
-            BeaconAttachment attachment = nearBeacon.getAttachmentForCurrentLanguage(context);
+            BeaconAttachment attachment = nearBeacon.getBestAvailableAttachment(context);
             if (attachment != null) {
                 final Intent intent = new Intent(context, MainActivity.class);
                 // pass the url from the beacon, so that it can be opened from your activity
