@@ -142,3 +142,66 @@ This will clear the cached server responses and will force NearBee to fetch fres
 ```javascript
 NearBee.clearNotificationCache();
 ```
+
+
+### Overriding notification on-click behaviour
+
+#### Android
+
+##### 1. Go to `your_app_dir/android/app/build.gradle` and add this dependancy
+```gradle
+implementation 'co.nearbee:nearbeesdk:0.1.10'
+```
+
+##### 2. Create a java file in your `your_app_dir/android/app/src/main/java/com/your_app` 
+
+```java
+package com.your_app_package;
+
+import android.content.Context;
+import android.content.Intent;
+
+import co.nearbee.NotificationManager;
+import co.nearbee.models.BeaconAttachment;
+import co.nearbee.models.NearBeacon;
+
+
+public class MyNotificationManager extends NotificationManager {
+
+    public MyNotificationManager(Context context) {
+        super(context);
+    }
+
+    @Override
+    public Intent getAppIntent(Context context) {
+        // This intent is for handling grouped notification click
+        return new Intent(context, MainActivity.class);
+    }
+
+    @Override
+    public Intent getBeaconIntent(Context context, NearBeacon nearBeacon) {
+        // This intent is for handling individual notification click
+        // Pass the intent of the activity that you want to be opened on click
+        if (nearBeacon.getBusiness() != null) {
+            BeaconAttachment attachment = nearBeacon.getAttachmentForCurrentLanguage(context);
+            if (attachment != null) {
+                final Intent intent = new Intent(context, MainActivity.class);
+                // pass the url from the beacon, so that it can be opened from your activity
+                intent.putExtra("url", attachment.getUrl());
+                return intent;
+            }
+        }
+        return null;
+    }
+
+}
+
+```
+
+##### 3. Add this metadata to your `AndroidManifest.xml`
+
+```xml
+<meta-data
+    android:name="co.nearbee.notification_util"
+    android:value=".MyNotificationManager" />
+```
