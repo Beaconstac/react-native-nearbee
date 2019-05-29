@@ -101,6 +101,9 @@ public class NearBeeModule extends ReactContextBaseJavaModule implements NearBea
                     ProximityAttachment pa = (ProximityAttachment) attachment;
                     beaconJson.put("bannerType", pa.getBannerType());
                     beaconJson.put("bannerImageUrl", pa.getBannerImageURL());
+                } else {
+                    beaconJson.put("bannerType", JSONObject.NULL);
+                    beaconJson.put("bannerImageUrl", JSONObject.NULL);
                 }
                 jsonArray.put(beaconJson);
             }
