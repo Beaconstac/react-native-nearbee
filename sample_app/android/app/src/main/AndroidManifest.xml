@@ -28,10 +28,10 @@
 
         <meta-data
                 android:name="co.nearbee.api_key"
-                android:value="08ddda7aabcbecfa54b29f6d032d7d289eb241b5"/>
+                android:value="your_api_key"/>
         <meta-data
                 android:name="co.nearbee.organization_id"
-                android:value="1697"/>
+                android:value="123"/>
 
     </application>
 

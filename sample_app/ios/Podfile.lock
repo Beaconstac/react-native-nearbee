@@ -1,13 +1,13 @@
 PODS:
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
-  - EddystoneScanner (1.2.6)
+  - EddystoneScanner (1.2.9)
   - Folly (2016.10.31.00):
     - boost-for-react-native
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - NearBee (0.1.2):
+  - NearBee (0.1.4):
     - EddystoneScanner
     - Socket.IO-Client-Swift
   - React (0.57.4):
@@ -55,7 +55,7 @@ PODS:
     - DoubleConversion (= 1.1.6)
     - Folly (= 2016.10.31.00)
     - glog (= 0.3.5)
-    - NearBee (= 0.1.2)
+    - NearBee (= 0.1.4)
     - React/Core (= 0.57.4)
     - React/CxxBridge (= 0.57.4)
     - React/RCTAnimation (= 0.57.4)
@@ -112,17 +112,17 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
-  EddystoneScanner: 339495e84231ca0714c9f61acaadca92d7e440f2
+  EddystoneScanner: 49f0d02b1dcd5e14e915bf4d67da973014807715
   Folly: c89ac2d5c6ab169cd7397ef27485c44f35f742c7
   glog: e8acf0ebbf99759d3ff18c86c292a5898282dcde
-  NearBee: 1cbcd8acfab4864ea9f3604398def2a18cfd8830
+  NearBee: e9ecf5286391da54095b7aa762d528ef6b21d9d3
   React: 1f4ca35c4aeac2b47e42e8be98bb9188f48fba84
   ReactNativePermissions: fee54e4deb5cb2fd1f8c20549298577178ee6c18
-  RNNearBee: ef690fcc33e8ef1913fe1d413430344cd673f7f5
+  RNNearBee: d870cedc95372c7142007504224d230d31334948
   Socket.IO-Client-Swift: c039a808195d22a7192962841b8c035cb61ea49e
   Starscream: 08172b481e145289c4930cb567230fb55897cfa4
   yoga: ac0f4c6ff31ac05bad1bd166fec5204c19de0277
 
 PODFILE CHECKSUM: e4f6313c366158ae62d5e0c989c5d7891b44c705
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.7.0
