@@ -183,7 +183,7 @@ public class MyNotificationManager extends NotificationManager {
         // This intent is for handling individual notification click
         // Pass the intent of the activity that you want to be opened on click
         if (nearBeacon.getBusiness() != null) {
-            BeaconAttachment attachment = nearBeacon.getAttachmentForCurrentLanguage(context);
+            BeaconAttachment attachment = nearBeacon.getBestAvailableAttachment(context);
             if (attachment != null) {
                 final Intent intent = new Intent(context, MainActivity.class);
                 // pass the url from the beacon, so that it can be opened from your activity
@@ -204,4 +204,27 @@ public class MyNotificationManager extends NotificationManager {
 <meta-data
     android:name="co.nearbee.notification_util"
     android:value=".MyNotificationManager" />
+```
+
+##### 4. Override `onCreate` inside your activity
+
+```java
+public class MainActivity extends ReactActivity {
+
+    @Override
+    protected String getMainComponentName() {
+        return "your_app";
+    }
+
+    // Use this to get the data passed from intent
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getIntent().getStringExtra("url") != null) {
+            String url = getIntent().getStringExtra("url");
+            // Do something with the url here
+            Util.startChromeTabs(this, url, true);
+        }
+    }
+}
 ```
