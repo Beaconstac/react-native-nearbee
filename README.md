@@ -125,6 +125,9 @@ onBeaconsFound = (event) => {
     let description = notification1.description;
     let icon = notification1.icon;
     let url = notification1.url;
+    let bannerType = notification1.bannerType;
+    let bannerImageUrl = notification1.bannerImageUrl;
+    let eddystoneUID = notification1.eddystoneUID;
 };
 ```
 ###### Stop scanning
