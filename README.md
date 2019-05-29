@@ -205,3 +205,26 @@ public class MyNotificationManager extends NotificationManager {
     android:name="co.nearbee.notification_util"
     android:value=".MyNotificationManager" />
 ```
+
+##### 4. Override `onCreate` inside your activity
+
+```java
+public class MainActivity extends ReactActivity {
+
+    @Override
+    protected String getMainComponentName() {
+        return "your_app";
+    }
+
+    // Use this to get the data passed from intent
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getIntent().getStringExtra("url") != null) {
+            String url = getIntent().getStringExtra("url");
+            // Do something with the url here
+            Util.startChromeTabs(this, url, true);
+        }
+    }
+}
+```
