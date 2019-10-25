@@ -58,7 +58,7 @@ RCT_EXPORT_METHOD(clearNotificationCache) {
 }
 
 RCT_EXPORT_METHOD(launchUrl:(NSString *)url) {
-    [RNNearBee.nearBee displayContentOfEddystoneUrl:url];
+    [RNNearBee.nearBee displayUrl:url];
 }
 
 - (void)didFindBeacons:(NSArray<NearBeeBeacon *> * _Nonnull)beacons {
@@ -104,11 +104,11 @@ RCT_EXPORT_METHOD(launchUrl:(NSString *)url) {
         NSSet *attachments = beacon.attachment.proximityAttachment;
         if (attachments && attachments.count > 0) {
             for (NearBeeProximityAttachment *attachment in attachments) {
-                if ([attachment.language isEqualToString:NSLocale.currentLocale.languageCode] && attachment.url != nil) {
-                    beaconJson[@"title"] = attachment.title;
-                    beaconJson[@"description"] = attachment.body;
-                    beaconJson[@"icon"] = attachment.iconURL;
-                    beaconJson[@"url"] = attachment.url;
+                if ([attachment.language isEqualToString:NSLocale.currentLocale.languageCode] && attachment.getURL != nil) {
+                    beaconJson[@"title"] = attachment.getTitle;
+                    beaconJson[@"description"] = attachment.getDescription;
+                    beaconJson[@"icon"] = attachment.getIconURL;
+                    beaconJson[@"url"] = attachment.getURL;
                     beaconJson[@"bannerType"] = @(attachment.bannerType);
                     beaconJson[@"bannerImageUrl"] = attachment.bannerImageURL;
                     break;
@@ -116,10 +116,10 @@ RCT_EXPORT_METHOD(launchUrl:(NSString *)url) {
             }
         }
         if (beaconJson.count == 0 && beacon.attachment.physicalWeb != nil) {
-            beaconJson[@"title"] = beacon.attachment.physicalWeb.title;
-            beaconJson[@"description"] = beacon.attachment.physicalWeb.body;
-            beaconJson[@"icon"] = beacon.attachment.physicalWeb.iconURL;
-            beaconJson[@"url"] = beacon.attachment.physicalWeb.finalURL;
+            beaconJson[@"title"] = beacon.attachment.physicalWeb.getTitle;
+            beaconJson[@"description"] = beacon.attachment.physicalWeb.getDescription;
+            beaconJson[@"icon"] = beacon.attachment.physicalWeb.getIconURL;
+            beaconJson[@"url"] = beacon.attachment.physicalWeb.getURL;
         }
         beaconJson[@"eddystoneUID"] = beacon.eddystoneUID;
         [jsonArray addObject:beaconJson];
@@ -137,7 +137,7 @@ RCT_EXPORT_METHOD(launchUrl:(NSString *)url) {
 }
 
 + (BOOL)checkAndProcessNearbyNotification:(UNNotification *)notification {
-    return [RNNearBee.nearBee checkAndProcessNearbyNotification:notification];
+    return [RNNearBee.nearBee checkAndProcessNearbyNotification:notification queryParameters:nil];
 }
 
 @end

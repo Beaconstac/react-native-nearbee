@@ -98,6 +98,7 @@ export default class App extends Component {
         eventEmitter.addListener(eventBeacons, this.onBeaconsFound);
         eventEmitter.addListener(eventError, this.onError);
         this.startScan();
+        NearBee.startGeoFenceMonitoring();
     }
 
     async requestLocationPermission() {

@@ -1,6 +1,6 @@
 {
   "name": "react-native-nearbee",
-  "version": "1.1.6",
+  "version": "2.0.0",
   "description": "NearBee SDK for your react native applications",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
   },
   "license": "",
   "peerDependencies": {
-    "react-native": "^0.57"
+    "react-native": "^0.59.10"
   },
   "homepage": "https://github.com/Beaconstac/react-native-nearbee"
 }

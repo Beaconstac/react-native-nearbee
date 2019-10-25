@@ -20,6 +20,8 @@ import co.nearbee.models.NearBeacon;
 import co.nearbee.models.ProximityAttachment;
 import co.nearbee.models.BeaconAttachment;
 import co.nearbee.NearBeeException;
+import co.nearbee.common.SuccessListener;
+import co.nearbee.common.ErrorListener;
 import co.nearbee.NearBeaconListener;
 import co.nearbee.utils.Util;
 
@@ -69,6 +71,39 @@ public class NearBeeModule extends ReactContextBaseJavaModule implements NearBea
         initialize();
         nearBee.startScanning(this);
         Log.d("RNNearbee", "Started scanning");
+    }
+
+    @ReactMethod
+    public void startGeoFenceMonitoring() {
+        initialize();
+        nearBee.startGeoFenceMonitoring().setSuccessListener(new SuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d("RNNearbee", "GeoFence setup success");
+            }
+        }).setErrorListener(new ErrorListener() {
+            @Override
+            public void onError(Exception e) {
+                Log.d("RNNearbee", "GeoFence setup failed");
+            }
+        });
+    }
+
+
+    @ReactMethod
+    public void stopGeoFenceMonitoring() {
+        initialize();
+        nearBee.stopGeoFenceMonitoring().setSuccessListener(new SuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d("RNNearbee", "Successfully removed GeoFences");
+            }
+        }).setErrorListener(new ErrorListener() {
+            @Override
+            public void onError(Exception e) {
+                Log.d("RNNearbee", "Failed to remove GeoFences");
+            }
+        });
     }
 
     @ReactMethod

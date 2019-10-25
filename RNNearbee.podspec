@@ -45,5 +45,5 @@ Pod::Spec.new do |s|
     s.dependency spec.name, "#{spec.version}"
   end
 
-  s.dependency 'NearBee', '~> 0.1.7'
+  s.dependency 'NearBee', '~> 0.2.0'
 end
