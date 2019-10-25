@@ -61,6 +61,15 @@ RCT_EXPORT_METHOD(launchUrl:(NSString *)url) {
     [RNNearBee.nearBee displayUrl:url];
 }
 
+RCT_EXPORT_METHOD(startGeoFenceMonitoring) {
+    [RNNearBee.nearBee startGeoFenceMonitoring];
+}
+
+RCT_EXPORT_METHOD(stopGeoFenceMonitoring) {
+    [RNNearBee.nearBee startGeoFenceMonitoring];
+}
+
+
 - (void)didFindBeacons:(NSArray<NearBeeBeacon *> * _Nonnull)beacons {
     [self.beacons addObjectsFromArray:beacons];
     [self updateList:self.beacons];

@@ -72,6 +72,8 @@ PODS:
     - React/RCTNetwork (= 0.59.10)
     - React/RCTText (= 0.59.10)
     - yoga (= 0.59.10.React)
+  - RNVectorIcons (6.4.2):
+    - React
   - Socket.IO-Client-Swift (14.0.0):
     - Starscream (~> 3.0.6)
   - Starscream (3.0.6)
@@ -91,6 +93,7 @@ DEPENDENCIES:
   - React/RCTWebSocket (from `../node_modules/react-native`)
   - ReactNativePermissions (from `../node_modules/react-native-permissions-ble-fix`)
   - RNNearBee (from `../node_modules/react-native-nearbee`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -114,6 +117,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-permissions-ble-fix"
   RNNearBee:
     :path: "../node_modules/react-native-nearbee"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -127,10 +132,11 @@ SPEC CHECKSUMS:
   React: 36d0768f9e93be2473b37e7fa64f92c1d5341eef
   ReactNativePermissions: fee54e4deb5cb2fd1f8c20549298577178ee6c18
   RNNearBee: 44cba3c6f5626630121b9f3c669185120d63cd0a
+  RNVectorIcons: 6607bd3a30291d0edb56f9bbe7ae411ee2b928b0
   Socket.IO-Client-Swift: 21e6a8a23a7d367d5ddfab6cbbd3c679cf3c25d6
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   yoga: 684513b14b03201579ba3cee20218c9d1298b0cc
 
-PODFILE CHECKSUM: e4f6313c366158ae62d5e0c989c5d7891b44c705
+PODFILE CHECKSUM: 820529254fbb28e7fce4228f2943dba58463e46e
 
 COCOAPODS: 1.6.0

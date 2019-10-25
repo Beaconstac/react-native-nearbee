@@ -34,4 +34,6 @@ target 'sample_app' do
 
   pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions-ble-fix'
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
 end
