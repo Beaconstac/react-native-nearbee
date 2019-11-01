@@ -66,7 +66,7 @@ RCT_EXPORT_METHOD(startGeoFenceMonitoring) {
 }
 
 RCT_EXPORT_METHOD(stopGeoFenceMonitoring) {
-    [RNNearBee.nearBee startGeoFenceMonitoring];
+    [RNNearBee.nearBee stopGeoFenceMonitoring];
 }
 
 
