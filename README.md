@@ -35,6 +35,20 @@ Add your API key and Orgnization ID to the `AndroidManifest.xml` as follows
 </application>
 ```
 
+Add this to your project level build.gradle
+```groovy
+allprojects {
+    repositories {
+        …
+        maven {
+            url  "https://dl.bintray.com/mobstac/maven"
+        }
+        …
+    }
+}
+```
+
+
 #### iOS
 
 Add your API key and Orgnization ID to the `Info.plist` as follows
