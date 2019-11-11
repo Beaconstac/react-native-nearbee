@@ -7,7 +7,7 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - NearBee (0.2.0):
+  - NearBee (0.2.1):
     - EddystoneScanner (~> 1.1.10)
     - Socket.IO-Client-Swift (~> 14.0.0)
   - React (0.59.10):
@@ -57,13 +57,15 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - ReactNativePermissions (1.1.8):
+  - ReactNativePermissions (1.2.0):
     - React
-  - RNNearBee (1.1.6):
+  - RNCAsyncStorage (1.6.2):
+    - React
+  - RNNearBee (2.0.1):
     - DoubleConversion (= 1.1.6)
     - Folly (= 2018.10.22.00)
     - glog (= 0.3.5)
-    - NearBee (~> 0.2.0)
+    - NearBee (~> 0.2.1)
     - React/Core (= 0.59.10)
     - React/CxxBridge (= 0.59.10)
     - React/RCTAnimation (= 0.59.10)
@@ -92,6 +94,7 @@ DEPENDENCIES:
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
   - ReactNativePermissions (from `../node_modules/react-native-permissions-ble-fix`)
+  - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - RNNearBee (from `../node_modules/react-native-nearbee`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -115,6 +118,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native"
   ReactNativePermissions:
     :path: "../node_modules/react-native-permissions-ble-fix"
+  RNCAsyncStorage:
+    :path: "../node_modules/@react-native-community/async-storage"
   RNNearBee:
     :path: "../node_modules/react-native-nearbee"
   RNVectorIcons:
@@ -128,15 +133,16 @@ SPEC CHECKSUMS:
   EddystoneScanner: 8767ba0519ddd1080c3669d274362bcc4f963ff2
   Folly: de497beb10f102453a1afa9edbf8cf8a251890de
   glog: aefd1eb5dda2ab95ba0938556f34b98e2da3a60d
-  NearBee: 221cc6bc147482880600650e6d2e9c355363fdfc
+  NearBee: 1b6e85a611138f632b69b631deb5a82de908670a
   React: 36d0768f9e93be2473b37e7fa64f92c1d5341eef
-  ReactNativePermissions: fee54e4deb5cb2fd1f8c20549298577178ee6c18
-  RNNearBee: 44cba3c6f5626630121b9f3c669185120d63cd0a
+  ReactNativePermissions: f0aec11433d43d45953c678b6982921d83ad94c8
+  RNCAsyncStorage: 5ae4d57458804e99f73d427214442a6b10a53856
+  RNNearBee: 04be7e5fb92d55c411763585404e985f73e887b9
   RNVectorIcons: 6607bd3a30291d0edb56f9bbe7ae411ee2b928b0
   Socket.IO-Client-Swift: 21e6a8a23a7d367d5ddfab6cbbd3c679cf3c25d6
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   yoga: 684513b14b03201579ba3cee20218c9d1298b0cc
 
-PODFILE CHECKSUM: 820529254fbb28e7fce4228f2943dba58463e46e
+PODFILE CHECKSUM: a7511c4f3508da84dc99ec45fc908633533c42d9
 
 COCOAPODS: 1.6.0
