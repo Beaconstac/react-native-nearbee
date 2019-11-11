@@ -10,9 +10,10 @@
   "dependencies": {
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.59.10",
+    "@react-native-community/async-storage": "1.6.2",
     "react-native-elements": "^0.19.1",
     "react-native-nearbee": "file:../",
-    "react-native-permissions-ble-fix": "^1.1.8",
+    "react-native-permissions-ble-fix": "^1.2.0",
     "react-native-vector-icons": "^6.1.0"
   },
   "devDependencies": {
