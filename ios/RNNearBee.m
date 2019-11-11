@@ -62,11 +62,11 @@ RCT_EXPORT_METHOD(launchUrl:(NSString *)url) {
 }
 
 RCT_EXPORT_METHOD(startGeoFenceMonitoring) {
-    [RNNearBee.nearBee startGeoFenceMonitoring];
+    [RNNearBee.nearBee startMonitoringGeoFenceRegions];
 }
 
 RCT_EXPORT_METHOD(stopGeoFenceMonitoring) {
-    [RNNearBee.nearBee stopGeoFenceMonitoring];
+    [RNNearBee.nearBee stopMonitoringGeoFenceRegions];
 }
 
 
