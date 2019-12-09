@@ -7,7 +7,7 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - NearBee (0.2.2):
+  - NearBee (0.2.3):
     - EddystoneScanner (~> 1.1.10)
     - Socket.IO-Client-Swift (~> 14.0.0)
   - React (0.59.10):
@@ -61,11 +61,11 @@ PODS:
     - React
   - RNCAsyncStorage (1.6.2):
     - React
-  - RNNearBee (2.0.2):
+  - RNNearBee (2.0.3):
     - DoubleConversion (= 1.1.6)
     - Folly (= 2018.10.22.00)
     - glog (= 0.3.5)
-    - NearBee (~> 0.2.2)
+    - NearBee (~> 0.2.3)
     - React/Core (= 0.59.10)
     - React/CxxBridge (= 0.59.10)
     - React/RCTAnimation (= 0.59.10)
@@ -133,11 +133,11 @@ SPEC CHECKSUMS:
   EddystoneScanner: 8767ba0519ddd1080c3669d274362bcc4f963ff2
   Folly: de497beb10f102453a1afa9edbf8cf8a251890de
   glog: aefd1eb5dda2ab95ba0938556f34b98e2da3a60d
-  NearBee: bc6c235ffa0ca2a21561c92e863d61a9f70725df
+  NearBee: a4c4d3eb44f6074386f6936bdd69ebb6d6f4c20d
   React: 36d0768f9e93be2473b37e7fa64f92c1d5341eef
   ReactNativePermissions: f0aec11433d43d45953c678b6982921d83ad94c8
   RNCAsyncStorage: 5ae4d57458804e99f73d427214442a6b10a53856
-  RNNearBee: cb6fd6827d5252824cc8bfe16ec52adc1da220f0
+  RNNearBee: a9069596092eb5c354f91a8151c5223a771b5658
   RNVectorIcons: 6607bd3a30291d0edb56f9bbe7ae411ee2b928b0
   Socket.IO-Client-Swift: 21e6a8a23a7d367d5ddfab6cbbd3c679cf3c25d6
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
