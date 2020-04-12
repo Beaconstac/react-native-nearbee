@@ -1,4 +1,4 @@
-platform :ios, '9.0'
+platform :ios, '10.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 target 'sample_app2' do
@@ -28,12 +28,16 @@ target 'sample_app2' do
   pod 'React-jsinspector', :path => '../node_modules/react-native/ReactCommon/jsinspector'
   pod 'ReactCommon/jscallinvoker', :path => "../node_modules/react-native/ReactCommon"
   pod 'ReactCommon/turbomodule/core', :path => "../node_modules/react-native/ReactCommon"
-  pod 'Yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
+  pod 'Yoga', :podspec => '../node_modules/react-native/ReactCommon/yoga/Yoga.podspec'
 
   pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+  pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions-ble-fix'
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+  pod 'RNNearBee', :path => '../node_modules/react-native-nearbee'
   target 'sample_app2Tests' do
     inherit! :search_paths
     # Pods for testing
@@ -49,5 +53,5 @@ target 'sample_app2-tvOS' do
     inherit! :search_paths
     # Pods for testing
   end
-
+  
 end

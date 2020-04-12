@@ -61,7 +61,7 @@ PODS:
     - React
   - RNCAsyncStorage (1.6.2):
     - React
-  - RNNearBee (2.0.3):
+  - RNNearBee (2.0.4):
     - DoubleConversion (= 1.1.6)
     - Folly (= 2018.10.22.00)
     - glog (= 0.3.5)
@@ -100,7 +100,7 @@ DEPENDENCIES:
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - boost-for-react-native
     - EddystoneScanner
     - NearBee
@@ -137,12 +137,12 @@ SPEC CHECKSUMS:
   React: 36d0768f9e93be2473b37e7fa64f92c1d5341eef
   ReactNativePermissions: f0aec11433d43d45953c678b6982921d83ad94c8
   RNCAsyncStorage: 5ae4d57458804e99f73d427214442a6b10a53856
-  RNNearBee: a9069596092eb5c354f91a8151c5223a771b5658
+  RNNearBee: a67e5e823ca2761c435a0090ac3f66c682af93a2
   RNVectorIcons: 6607bd3a30291d0edb56f9bbe7ae411ee2b928b0
   Socket.IO-Client-Swift: 21e6a8a23a7d367d5ddfab6cbbd3c679cf3c25d6
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   yoga: 684513b14b03201579ba3cee20218c9d1298b0cc
 
-PODFILE CHECKSUM: a7511c4f3508da84dc99ec45fc908633533c42d9
+PODFILE CHECKSUM: 5422d43fb8c3977f6de966f44dd6468a45f0c0e9
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.9.1

@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
   s.dependency 'React/RCTText', react_native_version
 
   # React's dependencies
-  s.dependency 'yoga', "#{react_native_version}.React"
+  s.dependency 'Yoga'
   podspecs = [
     '../react-native/third-party-podspecs/DoubleConversion.podspec',
     '../react-native/third-party-podspecs/Folly.podspec',

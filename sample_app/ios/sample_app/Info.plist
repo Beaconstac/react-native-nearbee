@@ -71,5 +71,7 @@
 		<string>armv7</string>
 		<string>bluetooth-le</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array/>
 </dict>
 </plist>
