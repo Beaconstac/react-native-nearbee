@@ -37,11 +37,11 @@ export default class App extends Component {
 
     }
 
-    UNSAFE_componentWillMount() {
+    componentWillMount() {
         this.checkPermissions();
     }
 
-    UNSAFE_componentWillUnmount() {
+    componentWillUnmount() {
         this.stopScan();
     }
 
@@ -143,7 +143,7 @@ export default class App extends Component {
             } else {
                 this.setState({
                     bluetoothPermission: true
-                });
+                })
             }
 
             // Checking all the states
