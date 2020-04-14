@@ -1,0 +1,1 @@
+../../../../../node_modules/react-native-permissions-ble-fix/ios/Permissions/RNPPhoto.h
