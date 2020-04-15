@@ -25,16 +25,16 @@ Pod::Spec.new do |s|
   s.platform       = :ios, '10.0'
 
   # React is split into a set of subspecs, these are the essentials
-  s.dependency 'React/Core', react_native_version
-  s.dependency 'React/CxxBridge', react_native_version
-  s.dependency 'React/RCTAnimation', react_native_version
-  s.dependency 'React/RCTImage', react_native_version
-  s.dependency 'React/RCTLinkingIOS', react_native_version
-  s.dependency 'React/RCTNetwork', react_native_version
-  s.dependency 'React/RCTText', react_native_version
+  s.dependency 'React-Core', react_native_version
+  s.dependency 'React-cxxreact', react_native_version
+  s.dependency 'React-RCTAnimation', react_native_version
+  s.dependency 'React-RCTImage', react_native_version
+  s.dependency 'React-RCTLinking', react_native_version
+  s.dependency 'React-RCTNetwork', react_native_version
+  s.dependency 'React-RCTText', react_native_version
 
   # React's dependencies
-  s.dependency 'yoga', "#{react_native_version}.React"
+  s.dependency 'yoga'
   podspecs = [
     '../react-native/third-party-podspecs/DoubleConversion.podspec',
     '../react-native/third-party-podspecs/Folly.podspec',
