@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "83CBBA2D1A601D0E00E9B192"
+               BlueprintIdentifier = "2D2A28121D9B038B00D4039D"
                BuildableName = "libReact.a"
-               BlueprintName = "React"
+               BlueprintName = "React-tvOS"
                ReferencedContainer = "container:../node_modules/react-native/React/React.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,9 +28,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "sample_app.app"
-               BlueprintName = "sample_app"
+               BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
+               BuildableName = "sample_app-tvOS.app"
+               BlueprintName = "sample_app-tvOS"
                ReferencedContainer = "container:sample_app.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,9 +42,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "sample_appTests.xctest"
-               BlueprintName = "sample_appTests"
+               BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
+               BuildableName = "sample_app-tvOSTests.xctest"
+               BlueprintName = "sample_app-tvOSTests"
                ReferencedContainer = "container:sample_app.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -60,9 +60,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "sample_appTests.xctest"
-               BlueprintName = "sample_appTests"
+               BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
+               BuildableName = "sample_app-tvOSTests.xctest"
+               BlueprintName = "sample_app-tvOSTests"
                ReferencedContainer = "container:sample_app.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -70,9 +70,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "sample_app.app"
-            BlueprintName = "sample_app"
+            BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
+            BuildableName = "sample_app-tvOS.app"
+            BlueprintName = "sample_app-tvOS"
             ReferencedContainer = "container:sample_app.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -93,9 +93,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "sample_app.app"
-            BlueprintName = "sample_app"
+            BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
+            BuildableName = "sample_app-tvOS.app"
+            BlueprintName = "sample_app-tvOS"
             ReferencedContainer = "container:sample_app.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -112,9 +112,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "sample_app.app"
-            BlueprintName = "sample_app"
+            BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
+            BuildableName = "sample_app-tvOS.app"
+            BlueprintName = "sample_app-tvOS"
             ReferencedContainer = "container:sample_app.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

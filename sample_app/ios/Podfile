@@ -1,41 +1,48 @@
-# Uncomment the next line to define a global platform for your project
 platform :ios, '10.0'
-
-node_modules_path = '../node_modules'
-react_path = File.join(node_modules_path, 'react-native')
-rnnearbee_spec_path = File.join(node_modules_path, 'react-native-nearbee/RNNearBee.podspec')
-yoga_path = File.join(react_path, 'ReactCommon/yoga')
-folly_spec_path = File.join(react_path, 'third-party-podspecs/Folly.podspec')
-glog_spec_path = File.join(react_path, 'third-party-podspecs/glog.podspec')
-double_conversion_spec_path = File.join(react_path, 'third-party-podspecs/DoubleConversion.podspec')
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 target 'sample_app' do
-  inherit! :search_paths
-
+  # Pods for sample_app
   pod 'NearBee'
-  # We want extra developer support in React inside this app
-  pod 'React', :path => react_path, :subspecs => [
-    'Core',
-    'CxxBridge', # Include this for RN >= 0.47
-    'DevSupport', # Include this to enable In-App Devmenu if RN >= 0.43
-    'RCTText',
-    'RCTNetwork',
-    'RCTWebSocket', # Needed for debugging
-    'RCTAnimation',
-  ]
-
-  # We're letting CP know where it can find these Podspecs
-  pod 'yoga', :path => yoga_path
-  pod 'Folly', :podspec => folly_spec_path
-  pod 'DoubleConversion', :podspec => double_conversion_spec_path
-  pod 'glog', :podspec => glog_spec_path
-
   pod 'RNNearBee', :path => '../node_modules/react-native-nearbee'
+  pod 'React', :path => '../node_modules/react-native/'
+  pod 'React-Core', :path => '../node_modules/react-native/React'
+  pod 'React-DevSupport', :path => '../node_modules/react-native/React'
+  pod 'React-RCTActionSheet', :path => '../node_modules/react-native/Libraries/ActionSheetIOS'
+  pod 'React-RCTAnimation', :path => '../node_modules/react-native/Libraries/NativeAnimation'
+  pod 'React-RCTBlob', :path => '../node_modules/react-native/Libraries/Blob'
+  pod 'React-RCTImage', :path => '../node_modules/react-native/Libraries/Image'
+  pod 'React-RCTLinking', :path => '../node_modules/react-native/Libraries/LinkingIOS'
+  pod 'React-RCTNetwork', :path => '../node_modules/react-native/Libraries/Network'
+  pod 'React-RCTSettings', :path => '../node_modules/react-native/Libraries/Settings'
+  pod 'React-RCTText', :path => '../node_modules/react-native/Libraries/Text'
+  pod 'React-RCTVibration', :path => '../node_modules/react-native/Libraries/Vibration'
+  pod 'React-RCTWebSocket', :path => '../node_modules/react-native/Libraries/WebSocket'
 
-  pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions-ble-fix'
+  pod 'React-cxxreact', :path => '../node_modules/react-native/ReactCommon/cxxreact'
+  pod 'React-jsi', :path => '../node_modules/react-native/ReactCommon/jsi'
+  pod 'React-jsiexecutor', :path => '../node_modules/react-native/ReactCommon/jsiexecutor'
+  pod 'React-jsinspector', :path => '../node_modules/react-native/ReactCommon/jsinspector'
+  pod 'yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
 
-  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+  pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
+  pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
+  pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+  target 'sample_appTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  use_native_modules!
+end
+
+target 'sample_app-tvOS' do
+  # Pods for sample_app-tvOS
+
+  target 'sample_app-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
 
 end
