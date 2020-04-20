@@ -93,12 +93,13 @@ PODS:
     - glog (= 0.3.5)
     - NearBee (~> 0.2.3)
     - React-Core (= 0.60.6)
+    - React-cxxreact (= 0.60.6)
     - React-RCTAnimation (= 0.60.6)
     - React-RCTImage (= 0.60.6)
     - React-RCTLinking (= 0.60.6)
     - React-RCTNetwork (= 0.60.6)
     - React-RCTText (= 0.60.6)
-    - yoga
+    - yoga (= 0.60.6.React)
   - RNVectorIcons (6.6.0):
     - React
   - Socket.IO-Client-Swift (14.0.0):
@@ -220,7 +221,7 @@ SPEC CHECKSUMS:
   React-RCTWebSocket: 7cd2c8d0f8ddd680dc76404defba7ab1f56b83af
   ReactNativePermissions: f3beb8871251594a8ea2c6b19a3f8252d5c7379d
   RNCAsyncStorage: 60a80e72d95bf02a01cace55d3697d9724f0d77f
-  RNNearBee: dc393d1029716a9432751e7bc198bcdf72cb0a9c
+  RNNearBee: d2aa35357953b369a9b7cd6f241c4acd6347d9c1
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   Socket.IO-Client-Swift: 21e6a8a23a7d367d5ddfab6cbbd3c679cf3c25d6
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
