@@ -99,7 +99,7 @@ PODS:
     - React-RCTLinking (= 0.60.6)
     - React-RCTNetwork (= 0.60.6)
     - React-RCTText (= 0.60.6)
-    - yoga (= 0.60.6.React)
+    - yoga
   - RNVectorIcons (6.6.0):
     - React
   - Socket.IO-Client-Swift (14.0.0):
@@ -221,12 +221,12 @@ SPEC CHECKSUMS:
   React-RCTWebSocket: 7cd2c8d0f8ddd680dc76404defba7ab1f56b83af
   ReactNativePermissions: f3beb8871251594a8ea2c6b19a3f8252d5c7379d
   RNCAsyncStorage: 60a80e72d95bf02a01cace55d3697d9724f0d77f
-  RNNearBee: d2aa35357953b369a9b7cd6f241c4acd6347d9c1
+  RNNearBee: 300bd2760474500a1f73de3a3d2fb2ff0105cd3c
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   Socket.IO-Client-Swift: 21e6a8a23a7d367d5ddfab6cbbd3c679cf3c25d6
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   yoga: 5079887aa3e4c62142d6bcee493022643ee4d730
 
-PODFILE CHECKSUM: 29b91e78738d33810eb35b7ba3139af440214311
+PODFILE CHECKSUM: 02bb21d4482bae19fb75ce0d48be999b0352027c
 
 COCOAPODS: 1.9.1

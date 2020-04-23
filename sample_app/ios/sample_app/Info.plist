@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>co.nearbee.api_key</key>
+	<string>DEVELOPER_TOKEN</string>
+	<key>co.nearbee.organization_id</key>
+	<string>ORGANIZATION_ID</string>
+	<key> NSLocationWhenInUseUsageDescription</key>
+	<string> location description.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
