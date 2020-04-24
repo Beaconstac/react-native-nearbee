@@ -297,6 +297,7 @@
 				DEAD_CODE_STRIPPING = NO;
 				INFOPLIST_FILE = sample_app/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
@@ -320,6 +321,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = sample_app/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
