@@ -6,8 +6,12 @@
 	<string>DEVELOPER_TOKEN</string>
 	<key>co.nearbee.organization_id</key>
 	<string>ORGANIZATION_ID</string>
-	<key> NSLocationWhenInUseUsageDescription</key>
-	<string> location description.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Range Beacons</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Range Beacons</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Range Beacons</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
