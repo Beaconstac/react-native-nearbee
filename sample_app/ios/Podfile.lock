@@ -83,25 +83,16 @@ PODS:
     - React-Core (= 0.60.6)
   - React-RCTWebSocket (0.60.6):
     - React-Core (= 0.60.6)
-  - ReactNativePermissions (1.2.0):
-    - React
-  - RNCAsyncStorage (1.6.2):
-    - React
   - RNNearBee (2.0.4):
-    - DoubleConversion (= 1.1.6)
-    - Folly (= 2018.10.22.00)
-    - glog (= 0.3.5)
     - NearBee (~> 0.2.3)
-    - React-Core (= 0.60.6)
-    - React-cxxreact (= 0.60.6)
-    - React-RCTAnimation (= 0.60.6)
-    - React-RCTImage (= 0.60.6)
-    - React-RCTLinking (= 0.60.6)
-    - React-RCTNetwork (= 0.60.6)
-    - React-RCTText (= 0.60.6)
-    - yoga (= 0.60.6.React)
-  - RNVectorIcons (6.6.0):
-    - React
+    - React-Core
+    - React-cxxreact
+    - React-RCTAnimation
+    - React-RCTImage
+    - React-RCTLinking
+    - React-RCTNetwork
+    - React-RCTText
+    - yoga
   - Socket.IO-Client-Swift (14.0.0):
     - Starscream (~> 3.0.6)
   - Starscream (3.0.6)
@@ -129,10 +120,7 @@ DEPENDENCIES:
   - React-RCTText (from `../node_modules/react-native/Libraries/Text`)
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-RCTWebSocket (from `../node_modules/react-native/Libraries/WebSocket`)
-  - ReactNativePermissions (from `../node_modules/react-native-permissions-ble-fix`)
-  - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - RNNearBee (from `../node_modules/react-native-nearbee`)
-  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -184,14 +172,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/Vibration"
   React-RCTWebSocket:
     :path: "../node_modules/react-native/Libraries/WebSocket"
-  ReactNativePermissions:
-    :path: "../node_modules/react-native-permissions-ble-fix"
-  RNCAsyncStorage:
-    :path: "../node_modules/@react-native-community/async-storage"
   RNNearBee:
     :path: "../node_modules/react-native-nearbee"
-  RNVectorIcons:
-    :path: "../node_modules/react-native-vector-icons"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -219,14 +201,11 @@ SPEC CHECKSUMS:
   React-RCTText: d91537e29e38dc69cf09cbca0875cf5dc7402da6
   React-RCTVibration: 7655d72dfb919dd6d8e135ca108a5a2bd9fcd7b4
   React-RCTWebSocket: 7cd2c8d0f8ddd680dc76404defba7ab1f56b83af
-  ReactNativePermissions: f3beb8871251594a8ea2c6b19a3f8252d5c7379d
-  RNCAsyncStorage: 60a80e72d95bf02a01cace55d3697d9724f0d77f
-  RNNearBee: d2aa35357953b369a9b7cd6f241c4acd6347d9c1
-  RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
+  RNNearBee: e04ce104403cb66a95086626c72f2caae4b505a6
   Socket.IO-Client-Swift: 21e6a8a23a7d367d5ddfab6cbbd3c679cf3c25d6
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   yoga: 5079887aa3e4c62142d6bcee493022643ee4d730
 
-PODFILE CHECKSUM: 29b91e78738d33810eb35b7ba3139af440214311
+PODFILE CHECKSUM: 6d68ec4009b5c3c5c19deba7989efd0558fd2ed1
 
 COCOAPODS: 1.9.1

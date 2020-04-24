@@ -2,7 +2,7 @@ platform :ios, '10.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 target 'sample_app' do
-  # Pods for sample_app
+  inherit! :search_paths
   pod 'NearBee'
   pod 'RNNearBee', :path => '../node_modules/react-native-nearbee'
   pod 'React', :path => '../node_modules/react-native/'
@@ -29,20 +29,5 @@ target 'sample_app' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  target 'sample_appTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  use_native_modules!
 end
 
-target 'sample_app-tvOS' do
-  # Pods for sample_app-tvOS
-
-  target 'sample_app-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-end
