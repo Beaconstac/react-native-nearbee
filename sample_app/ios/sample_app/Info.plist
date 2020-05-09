@@ -55,6 +55,8 @@
 	<string>Range Beacons</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Range Beacons</string>
+  <key>NSLocationAlwaysAndWhenInUsageDescription</key>
+  <string>Range beacons</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Range Beacons</string>
 	<key>NSLocationUsageDescription</key>

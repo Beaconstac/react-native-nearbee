@@ -1,15 +1,15 @@
 PODS:
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
-  - EddystoneScanner (1.1.11)
+  - EddystoneScanner (1.2.13)
   - Folly (2018.10.22.00):
     - boost-for-react-native
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - NearBee (0.2.3):
-    - EddystoneScanner (~> 1.1.10)
-    - Socket.IO-Client-Swift (~> 14.0.0)
+  - NearBee (0.2.4):
+    - EddystoneScanner
+    - Socket.IO-Client-Swift
   - React (0.59.10):
     - React/Core (= 0.59.10)
   - React/Core (0.59.10):
@@ -61,11 +61,11 @@ PODS:
     - React
   - RNCAsyncStorage (1.6.2):
     - React
-  - RNNearBee (2.0.3):
+  - RNNearBee (2.0.4):
     - DoubleConversion (= 1.1.6)
     - Folly (= 2018.10.22.00)
     - glog (= 0.3.5)
-    - NearBee (~> 0.2.3)
+    - NearBee (~> 0.2.4)
     - React/Core (= 0.59.10)
     - React/CxxBridge (= 0.59.10)
     - React/RCTAnimation (= 0.59.10)
@@ -76,9 +76,9 @@ PODS:
     - yoga (= 0.59.10.React)
   - RNVectorIcons (6.4.2):
     - React
-  - Socket.IO-Client-Swift (14.0.0):
-    - Starscream (~> 3.0.6)
-  - Starscream (3.0.6)
+  - Socket.IO-Client-Swift (15.2.0):
+    - Starscream (~> 3.1)
+  - Starscream (3.1.1)
   - yoga (0.59.10.React)
 
 DEPENDENCIES:
@@ -100,7 +100,7 @@ DEPENDENCIES:
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - boost-for-react-native
     - EddystoneScanner
     - NearBee
@@ -130,19 +130,19 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
-  EddystoneScanner: 8767ba0519ddd1080c3669d274362bcc4f963ff2
+  EddystoneScanner: bc26bd709596e46bd304d536d0b26f2850269d16
   Folly: de497beb10f102453a1afa9edbf8cf8a251890de
   glog: aefd1eb5dda2ab95ba0938556f34b98e2da3a60d
-  NearBee: a4c4d3eb44f6074386f6936bdd69ebb6d6f4c20d
+  NearBee: eb791541339892c988cd236f45e3f9abf132cdde
   React: 36d0768f9e93be2473b37e7fa64f92c1d5341eef
   ReactNativePermissions: f0aec11433d43d45953c678b6982921d83ad94c8
   RNCAsyncStorage: 5ae4d57458804e99f73d427214442a6b10a53856
-  RNNearBee: a9069596092eb5c354f91a8151c5223a771b5658
+  RNNearBee: 80201d5794fbfa8286865323076e38c6ede809af
   RNVectorIcons: 6607bd3a30291d0edb56f9bbe7ae411ee2b928b0
-  Socket.IO-Client-Swift: 21e6a8a23a7d367d5ddfab6cbbd3c679cf3c25d6
-  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
+  Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
+  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   yoga: 684513b14b03201579ba3cee20218c9d1298b0cc
 
 PODFILE CHECKSUM: a7511c4f3508da84dc99ec45fc908633533c42d9
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.9.0
