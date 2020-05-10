@@ -2,14 +2,22 @@
   package="com.sample_app">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permisssion.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permisssion.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <application
       android:name=".MainApplication"
       android:label="@string/app_name"
       android:icon="@mipmap/ic_launcher"
       android:roundIcon="@mipmap/ic_launcher_round"
-      android:allowBackup="false"
+      android:allowBackup="true"
       android:theme="@style/AppTheme">
+      <meta-data
+        android:name="co.nearbee.api_key"
+        android:value="DEVELOPER_TOKEN" />
+      <meta-data
+        android:name="co.nearbee.organization_id"
+        android:value="ORGANIZATION_ID" />
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"
@@ -24,3 +32,4 @@
     </application>
 
 </manifest>
+
