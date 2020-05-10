@@ -87,7 +87,7 @@ PODS:
     - React
   - RNCAsyncStorage (1.6.2):
     - React
-  - RNNearBee (2.0.4):
+  - RNNearBee (2.1.0-beta.0):
     - NearBee (~> 0.2.4)
     - React-Core
     - React-cxxreact
@@ -218,7 +218,7 @@ SPEC CHECKSUMS:
   React-RCTWebSocket: 7cd2c8d0f8ddd680dc76404defba7ab1f56b83af
   ReactNativePermissions: f0aec11433d43d45953c678b6982921d83ad94c8
   RNCAsyncStorage: 5ae4d57458804e99f73d427214442a6b10a53856
-  RNNearBee: 9d9c1dd6b082f49d262d08145d15c1f68efc90a5
+  RNNearBee: 4df3467623f4cf236d1d8507d9be16622d718bea
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0

@@ -46,7 +46,7 @@
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Range Beacons</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Range Beacons</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>
@@ -57,6 +57,7 @@
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
+		<string>bluetooth-le</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
