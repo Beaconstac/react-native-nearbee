@@ -156,6 +156,15 @@
 			attributes = {
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Facebook;
+				TargetAttributes = {
+					13B07F861A680F5B00A75B9A = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "sample_app" */;
 			compatibilityVersion = "Xcode 10.0";
@@ -295,6 +304,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = 44VN4BY3TF;
 				INFOPLIST_FILE = sample_app/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
@@ -319,6 +329,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 44VN4BY3TF;
 				INFOPLIST_FILE = sample_app/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,

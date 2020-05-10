@@ -37,7 +37,7 @@ RCT_EXPORT_METHOD(initialize) {
     self.beacons = [@[] mutableCopy];
     RNNearBee.nearBee = [NearBee initNearBee];
     RNNearBee.nearBee.delegate = self;
-    [RNNearBee.nearBee enableBackgroundNotification:NO];
+    [RNNearBee.nearBee enableBackgroundNotification:YES];
 }
 
 RCT_EXPORT_METHOD(enableBackgroundNotifications:(BOOL)enabled) {

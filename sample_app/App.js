@@ -94,6 +94,7 @@ export default class App extends Component {
             return;
         }
         NearBee.initialize();
+        NearBee.enableBackgroundNotifications(true);
         const eventEmitter = new NativeEventEmitter(NearBee);
         eventEmitter.addListener(eventBeacons, this.onBeaconsFound);
         eventEmitter.addListener(eventError, this.onError);
