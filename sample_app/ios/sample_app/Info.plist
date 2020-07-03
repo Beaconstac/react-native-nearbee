@@ -47,6 +47,8 @@
 	<string>Range Beacons</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Range Beacons</string>
+  <key>NSBluetoothAlwaysUsageDescription</key>
+  <string>Range beacons</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>
