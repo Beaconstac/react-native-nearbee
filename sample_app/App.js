@@ -10,7 +10,7 @@ import React, {Component} from 'react';
 import {ActivityIndicator, FlatList, Image, NativeEventEmitter, Platform, StyleSheet, Text, View} from 'react-native';
 import {ListItem} from 'react-native-elements'
 import NearBee from './nearbee_sdk/NearBee';
-import Permissions from 'react-native-permissions-ble-fix'
+import {PERMISSIONS, request as PermissionRequest, requestMultiple as PermissionRequests, checkMultiple as PermissionChecks, RESULTS as PermissionResult} from 'react-native-permissions';
 
 
 const eventBeacons = "nearBeeNotifications";
@@ -103,17 +103,22 @@ export default class App extends Component {
     }
 
     async requestLocationPermission() {
-        Permissions.request('location', 'always').then(response => {
+        PermissionRequests(Platform.select({
+                android: [PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION, PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION],
+                ios: PERMISSIONS.IOS.LOCATION_ALWAYS,
+            })
+        ).then(response => {
             // Returns once the user has chosen to 'allow' or to 'not allow' access
             // Response is one of: 'authorized', 'denied', 'restricted', or 'undetermined'
-            if (response === 'authorized') {
+            if (response === PermissionResult.GRANTED) {
                 this.checkPermissions()
             }
         })
     }
 
     async requestBluetoothPermission() {
-        Permissions.request('bluetooth').then(response => {
+        PermissionRequest(PERMISSIONS.IOS.LOCATION_ALWAYS
+        ).then(response => {
             // Returns once the user has chosen to 'allow' or to 'not allow' access
             // Response is one of: 'authorized', 'denied', 'restricted', or 'undetermined'
             if (response === 'authorized') {
@@ -123,20 +128,19 @@ export default class App extends Component {
     }
 
     async checkPermissions() {
-        const permissionRequests = ['location'];
-        const isIOS = Platform.OS === 'ios';
-        if (isIOS) {
-            permissionRequests.push('bluetooth');
-        }
-        Permissions.checkMultiple(permissionRequests).then(response => {
+        PermissionChecks(Platform.select({
+            android: [PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION, PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION],
+            ios: [PERMISSIONS.IOS.LOCATION_ALWAYS, PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL],
+        })).then(response => {
             //response is an object mapping type to permission
-            if (response.location === 'authorized') {
+            if (response[PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION] === PermissionResult.GRANTED || response[PERMISSIONS.IOS.LOCATION_ALWAYS] === PermissionResult.GRANTED ) {
                 this.setState({
                     locationPermission: true,
                 });
             }
+            const isIOS = Platform.OS === 'ios';
             if (isIOS) {
-                if (response.bluetooth === 'authorized') {
+                if (response[PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL] === PermissionResult.GRANTED) {
                     this.setState({
                         bluetoothPermission: true
                     });
