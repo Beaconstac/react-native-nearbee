@@ -93,7 +93,6 @@ export default class App extends Component {
         if (!this.state.locationPermission) {
             return;
         }
-        console.log("initnearbee ready")
         NearBee.initialize();
         NearBee.enableBackgroundNotifications(true);
         const eventEmitter = new NativeEventEmitter(NearBee);
@@ -111,10 +110,16 @@ export default class App extends Component {
         ).then(response => {
             // Returns once the user has chosen to 'allow' or to 'not allow' access
             // Response is one of: 'authorized', 'denied', 'restricted', or 'undetermined'
-            if (response[PERMISSIONS.IOS.LOCATION_ALWAYS] === PermissionResult.GRANTED || response[PERMISSIONS.IOS.LOCATION_WHEN_IN_USE] === PermissionResult.GRANTED) {
-                this.checkPermissions()
+            if (Platform.OS === 'ios') {
+                if (response[PERMISSIONS.IOS.LOCATION_ALWAYS] === PermissionResult.GRANTED || response[PERMISSIONS.IOS.LOCATION_WHEN_IN_USE] === PermissionResult.GRANTED) {
+                    this.checkPermissions();
+                }
+            } else {
+                if (response[PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION] === PermissionResult.GRANTED || response[PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION] === PermissionResult.GRANTED) {
+                    this.checkPermissions();
+                }
             }
-        })
+        });
     }
 
     async requestBluetoothPermission() {
@@ -122,7 +127,6 @@ export default class App extends Component {
         ).then(response => {
             // Returns once the user has chosen to 'allow' or to 'not allow' access
             // Response is one of: 'authorized', 'denied', 'restricted', or 'undetermined'
-            console.log(response)
             if (response === PermissionResult.GRANTED) {
                 this.checkPermissions()
             }
@@ -135,22 +139,25 @@ export default class App extends Component {
             ios: [PERMISSIONS.IOS.LOCATION_ALWAYS, PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL],
         })).then(response => {
             //response is an object mapping type to permission
-            if (response[PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION] === PermissionResult.GRANTED || response[PERMISSIONS.IOS.LOCATION_ALWAYS] === PermissionResult.GRANTED || response[PERMISSIONS.IOS.LOCATION_WHEN_IN_USE] === PermissionResult.GRANTED ) {
-                this.setState({
-                    locationPermission: true,
-                });
-            }
-            const isIOS = Platform.OS === 'ios';
-            if (isIOS) {
+            if (Platform.OS === 'ios') {
                 if (response[PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL] === PermissionResult.GRANTED) {
                     this.setState({
                         bluetoothPermission: true
                     });
                 }
+                if (response[PERMISSIONS.IOS.LOCATION_ALWAYS] === PermissionResult.GRANTED || response[PERMISSIONS.IOS.LOCATION_WHEN_IN_USE] === PermissionResult.GRANTED) {
+                    this.setState({
+                        locationPermission: true
+                    });
+                }
             } else {
-                this.setState({
-                    bluetoothPermission: true
-                })
+                // Bluetooth permission is only required for iOS
+                if (response[PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION] === PermissionResult.GRANTED || response[PERMISSIONS.IOS.LOCATION_ALWAYS] === PermissionResult.GRANTED || response[PERMISSIONS.IOS.LOCATION_WHEN_IN_USE] === PermissionResult.GRANTED ) {
+                    this.setState({
+                        locationPermission: true,
+                        bluetoothPermission: true
+                    });
+                }
             }
 
             // Checking all the states
@@ -159,14 +166,12 @@ export default class App extends Component {
             } else if (!this.state.bluetoothPermission) {
                 this.requestBluetoothPermission();
             } else {
-                console.log("final permission block")
                 this.initNearBee();
             }
         });
     }
 
     startScan() {
-        console.log("nearbee scan start")
         NearBee.startScanning();
         this.scanning = true;
         this.setState({
