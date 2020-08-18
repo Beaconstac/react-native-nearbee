@@ -12,9 +12,17 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - NearBee (0.3.0):
+  - NearBee (0.3.1):
     - EddystoneScanner
     - Socket.IO-Client-Swift
+  - Permission-BluetoothPeripheral (2.1.5):
+    - RNPermissions
+  - Permission-LocationAlways (2.1.5):
+    - RNPermissions
+  - Permission-LocationWhenInUse (2.1.5):
+    - RNPermissions
+  - Permission-Notifications (2.1.5):
+    - RNPermissions
   - React (0.60.6):
     - React-Core (= 0.60.6)
     - React-DevSupport (= 0.60.6)
@@ -83,12 +91,10 @@ PODS:
     - React-Core (= 0.60.6)
   - React-RCTWebSocket (0.60.6):
     - React-Core (= 0.60.6)
-  - ReactNativePermissions (1.2.0):
-    - React
   - RNCAsyncStorage (1.6.2):
     - React
-  - RNNearBee (3.0.1):
-    - NearBee (~> 0.3.0)
+  - RNNearBee (3.0.3):
+    - NearBee (~> 0.3.1)
     - React-Core
     - React-cxxreact
     - React-RCTAnimation
@@ -97,6 +103,8 @@ PODS:
     - React-RCTNetwork
     - React-RCTText
     - yoga
+  - RNPermissions (2.1.5):
+    - React
   - RNVectorIcons (6.6.0):
     - React
   - Socket.IO-Client-Swift (15.2.0):
@@ -109,6 +117,10 @@ DEPENDENCIES:
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - NearBee
+  - Permission-BluetoothPeripheral (from `../node_modules/react-native-permissions/ios/BluetoothPeripheral.podspec`)
+  - Permission-LocationAlways (from `../node_modules/react-native-permissions/ios/LocationAlways.podspec`)
+  - Permission-LocationWhenInUse (from `../node_modules/react-native-permissions/ios/LocationWhenInUse.podspec`)
+  - Permission-Notifications (from `../node_modules/react-native-permissions/ios/Notifications.podspec`)
   - React (from `../node_modules/react-native/`)
   - React-Core (from `../node_modules/react-native/React`)
   - React-cxxreact (from `../node_modules/react-native/ReactCommon/cxxreact`)
@@ -126,9 +138,9 @@ DEPENDENCIES:
   - React-RCTText (from `../node_modules/react-native/Libraries/Text`)
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-RCTWebSocket (from `../node_modules/react-native/Libraries/WebSocket`)
-  - ReactNativePermissions (from `../node_modules/react-native-permissions-ble-fix`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - RNNearBee (from `../node_modules/react-native-nearbee`)
+  - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -147,6 +159,14 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/Folly.podspec"
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
+  Permission-BluetoothPeripheral:
+    :path: "../node_modules/react-native-permissions/ios/BluetoothPeripheral.podspec"
+  Permission-LocationAlways:
+    :path: "../node_modules/react-native-permissions/ios/LocationAlways.podspec"
+  Permission-LocationWhenInUse:
+    :path: "../node_modules/react-native-permissions/ios/LocationWhenInUse.podspec"
+  Permission-Notifications:
+    :path: "../node_modules/react-native-permissions/ios/Notifications.podspec"
   React:
     :path: "../node_modules/react-native/"
   React-Core:
@@ -181,12 +201,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/Vibration"
   React-RCTWebSocket:
     :path: "../node_modules/react-native/Libraries/WebSocket"
-  ReactNativePermissions:
-    :path: "../node_modules/react-native-permissions-ble-fix"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-community/async-storage"
   RNNearBee:
     :path: "../node_modules/react-native-nearbee"
+  RNPermissions:
+    :path: "../node_modules/react-native-permissions"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
   yoga:
@@ -198,7 +218,11 @@ SPEC CHECKSUMS:
   EddystoneScanner: bc26bd709596e46bd304d536d0b26f2850269d16
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
-  NearBee: cc6b190d543d66c268b93e3c92b21fbff1e53733
+  NearBee: d4ee494e8bc281e9b3b6269bad2d4bbd1f4db599
+  Permission-BluetoothPeripheral: b28267800e6bbedf18768e2bda7ebed3cf7a1a81
+  Permission-LocationAlways: 14ec76aa2912ea3a7ddc5b564d781bff51a5f3c8
+  Permission-LocationWhenInUse: 16ecd20d82341c6b4336dfe5520c098bea85a2f5
+  Permission-Notifications: 5ecb0f433b585c5621dc30b168772d60ae8574c2
   React: 68e7f8dfc27729eade18423072a143120f2f32ab
   React-Core: fc9dace551f6c8c1007dd2d3cb1bc10c90a01d3e
   React-cxxreact: abe59014fce932d41a08bf1aa5dcad9ca8f0a2c5
@@ -216,15 +240,14 @@ SPEC CHECKSUMS:
   React-RCTText: d91537e29e38dc69cf09cbca0875cf5dc7402da6
   React-RCTVibration: 7655d72dfb919dd6d8e135ca108a5a2bd9fcd7b4
   React-RCTWebSocket: 7cd2c8d0f8ddd680dc76404defba7ab1f56b83af
-  ReactNativePermissions: f0aec11433d43d45953c678b6982921d83ad94c8
   RNCAsyncStorage: 5ae4d57458804e99f73d427214442a6b10a53856
-  RNNearBee: c42cc47894c2e80b0f276d2097c8d943bf256e0f
+  RNNearBee: d9cc13595c169af534fb6a9c23217e288f479763
+  RNPermissions: 1888705aebcc81714efa5dbff94351e4388ae012
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   yoga: 5079887aa3e4c62142d6bcee493022643ee4d730
 
-
-PODFILE CHECKSUM: 4c0abe80ffc592a79f2b1e6e70842112705db7f8
+PODFILE CHECKSUM: 1ba7254b20679c5ba1e4614a3e7caebf6a7e825d
 
 COCOAPODS: 1.9.0

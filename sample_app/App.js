@@ -37,7 +37,7 @@ export default class App extends Component {
 
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.checkPermissions();
     }
 
@@ -93,6 +93,7 @@ export default class App extends Component {
         if (!this.state.locationPermission) {
             return;
         }
+        console.log("initnearbee ready")
         NearBee.initialize();
         NearBee.enableBackgroundNotifications(true);
         const eventEmitter = new NativeEventEmitter(NearBee);
@@ -105,23 +106,24 @@ export default class App extends Component {
     async requestLocationPermission() {
         PermissionRequests(Platform.select({
                 android: [PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION, PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION],
-                ios: PERMISSIONS.IOS.LOCATION_ALWAYS,
+                ios: [PERMISSIONS.IOS.LOCATION_ALWAYS, PERMISSIONS.IOS.LOCATION_WHEN_IN_USE],
             })
         ).then(response => {
             // Returns once the user has chosen to 'allow' or to 'not allow' access
             // Response is one of: 'authorized', 'denied', 'restricted', or 'undetermined'
-            if (response === PermissionResult.GRANTED) {
+            if (response[PERMISSIONS.IOS.LOCATION_ALWAYS] === PermissionResult.GRANTED || response[PERMISSIONS.IOS.LOCATION_WHEN_IN_USE] === PermissionResult.GRANTED) {
                 this.checkPermissions()
             }
         })
     }
 
     async requestBluetoothPermission() {
-        PermissionRequest(PERMISSIONS.IOS.LOCATION_ALWAYS
+        PermissionRequest(PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL
         ).then(response => {
             // Returns once the user has chosen to 'allow' or to 'not allow' access
             // Response is one of: 'authorized', 'denied', 'restricted', or 'undetermined'
-            if (response === 'authorized') {
+            console.log(response)
+            if (response === PermissionResult.GRANTED) {
                 this.checkPermissions()
             }
         })
@@ -133,7 +135,7 @@ export default class App extends Component {
             ios: [PERMISSIONS.IOS.LOCATION_ALWAYS, PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL],
         })).then(response => {
             //response is an object mapping type to permission
-            if (response[PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION] === PermissionResult.GRANTED || response[PERMISSIONS.IOS.LOCATION_ALWAYS] === PermissionResult.GRANTED ) {
+            if (response[PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION] === PermissionResult.GRANTED || response[PERMISSIONS.IOS.LOCATION_ALWAYS] === PermissionResult.GRANTED || response[PERMISSIONS.IOS.LOCATION_WHEN_IN_USE] === PermissionResult.GRANTED ) {
                 this.setState({
                     locationPermission: true,
                 });
@@ -157,12 +159,14 @@ export default class App extends Component {
             } else if (!this.state.bluetoothPermission) {
                 this.requestBluetoothPermission();
             } else {
+                console.log("final permission block")
                 this.initNearBee();
             }
         });
     }
 
     startScan() {
+        console.log("nearbee scan start")
         NearBee.startScanning();
         this.scanning = true;
         this.setState({
