@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {ActivityIndicator, FlatList, Image, NativeEventEmitter, Platform, StyleSheet, Text, View} from 'react-native';
+import {ActivityIndicator, FlatList, Image, NativeEventEmitter, Platform, StyleSheet, Text, View, AppState} from 'react-native';
 import {ListItem} from 'react-native-elements'
 import NearBee from './nearbee_sdk/NearBee';
 import {PERMISSIONS, request as PermissionRequest, requestMultiple as PermissionRequests, checkMultiple as PermissionChecks, RESULTS as PermissionResult} from 'react-native-permissions';
@@ -39,11 +39,22 @@ export default class App extends Component {
 
     componentDidMount() {
         this.checkPermissions();
+        AppState.addEventListener("change", this._handleAppStateChange);
     }
 
     componentWillUnmount() {
         this.stopScan();
+        AppState.removeEventListener("change", this._handleAppStateChange);
     }
+
+    _handleAppStateChange = nextAppState => {
+        if (
+            nextAppState.match(/inactive|background/)) {
+            this.stopScan();
+        }  else {
+            this.startScan();
+        }
+    };
 
     onBackgroundChange = () => {
         if (this.bgEnabled === true) {
