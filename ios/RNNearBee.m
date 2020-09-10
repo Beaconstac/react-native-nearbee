@@ -37,7 +37,6 @@ RCT_EXPORT_METHOD(initialize) {
     self.beacons = [@[] mutableCopy];
     RNNearBee.nearBee = [NearBee initNearBee];
     RNNearBee.nearBee.delegate = self;
-    RNNearBee.nearBee.geoFenceNotificationThreshold = 20;
     [RNNearBee.nearBee enableBackgroundNotification:YES];
 }
 
