@@ -5,7 +5,6 @@
  * @format
  * @flow
  */
-
 import React, {Component} from 'react';
 import {ActivityIndicator, FlatList, Image, NativeEventEmitter, Platform, StyleSheet, Text, View, AppState} from 'react-native';
 import {ListItem} from 'react-native-elements'
@@ -48,6 +47,7 @@ export default class App extends Component {
     }
 
     _handleAppStateChange = nextAppState => {
+        console.log("-------- appState: ", nextAppState);
         if (
             nextAppState.match(/inactive|background/)) {
             this.stopScan();
@@ -73,6 +73,7 @@ export default class App extends Component {
     onBeaconsFound = (event) => {
         let beacons = [];
         let beacJson = JSON.parse(event.nearBeeNotifications);
+        // console.warn('beacon count: ', beacJson.nearBeeNotifications.length);
         for (let index = 0; index < beacJson.nearBeeNotifications.length; index++) {
             const element = beacJson.nearBeeNotifications[index];
             element['key'] = element.url;
@@ -105,6 +106,7 @@ export default class App extends Component {
             return;
         }
         NearBee.initialize();
+        // NearBee.enableDebugMode(true);
         NearBee.enableBackgroundNotifications(true);
         const eventEmitter = new NativeEventEmitter(NearBee);
         eventEmitter.addListener(eventBeacons, this.onBeaconsFound);

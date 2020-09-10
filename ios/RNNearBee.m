@@ -37,6 +37,7 @@ RCT_EXPORT_METHOD(initialize) {
     self.beacons = [@[] mutableCopy];
     RNNearBee.nearBee = [NearBee initNearBee];
     RNNearBee.nearBee.delegate = self;
+    RNNearBee.nearBee.geoFenceNotificationThreshold = 20;
     [RNNearBee.nearBee enableBackgroundNotification:YES];
 }
 
@@ -45,12 +46,18 @@ RCT_EXPORT_METHOD(enableBackgroundNotifications:(BOOL)enabled) {
 }
 
 RCT_EXPORT_METHOD(stopScanning) {
+//     NSLog(@"stop nearbee scanning");
     self.beacons = [@[] mutableCopy];
     [RNNearBee.nearBee stopScanning];
 }
 
 RCT_EXPORT_METHOD(startScanning) {
+//     NSLog(@"start nearbee scanning");
     [RNNearBee.nearBee startScanning];
+}
+
+RCT_EXPORT_METHOD(enableDebugMode:(BOOL)enabled) {
+    RNNearBee.nearBee.debugMode = enabled;
 }
 
 RCT_EXPORT_METHOD(clearNotificationCache) {
