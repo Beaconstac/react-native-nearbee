@@ -40,15 +40,15 @@
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>Range Beacons</string>
 	<key>NSLocationAlwaysAndWhenInUsageDescription</key>
-	<string>Range Beacons</string>
+	<string>Range beacons</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Range Beacons</string>
-  <key>NSLocationAlwaysAndWhenInUsageDescription</key>
-  <string>Range beacons</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Range Beacons</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Range Beacons</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Range beacons</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>
@@ -70,8 +70,8 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>co.nearbee.api_key</key>
-	<string>DEVELOPER_TOKEN</string>
+	<string>DEV_TOKEN</string>
 	<key>co.nearbee.organization_id</key>
-	<string>ORGANIZATION_ID</string>
+	<string>ORG_ID</string>
 </dict>
 </plist>

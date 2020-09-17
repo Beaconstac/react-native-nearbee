@@ -32,6 +32,6 @@ Pod::Spec.new do |s|
     '../react-native/third-party-podspecs/Folly.podspec',
     '../react-native/third-party-podspecs/glog.podspec'
   ]
-  
-  s.dependency 'NearBee', '~> 0.2.4'
+
+  s.dependency 'NearBee', '0.3.6-beta1'
 end

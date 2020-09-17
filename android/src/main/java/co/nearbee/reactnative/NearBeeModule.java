@@ -60,6 +60,13 @@ public class NearBeeModule extends ReactContextBaseJavaModule implements NearBea
     }
 
     @ReactMethod
+        public void enableDebugMode(boolean enabled) {
+            initialize();
+            nearBee.enableNotificationDebugMode(enabled);
+            Log.d("RNNearbee", "debug mode: " + String.valueOf(enabled));
+        }
+
+    @ReactMethod
     public void stopScanning() {
         initialize();
         nearBee.stopScanning();
