@@ -70,7 +70,7 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>co.nearbee.api_key</key>
-	<string>DEV_TOKEN</string>
+	<string>API_KEY</string>
 	<key>co.nearbee.organization_id</key>
 	<string>ORG_ID</string>
 </dict>

@@ -3,7 +3,7 @@
  * https://github.com/facebook/react-native
  *
  * @format
- * @flow
+ * @flow strict-local
  */
 import React, {Component} from 'react';
 import {ActivityIndicator, FlatList, Image, NativeEventEmitter, Platform, StyleSheet, Text, View, AppState} from 'react-native';

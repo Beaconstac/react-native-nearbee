@@ -11,9 +11,8 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		BEFA55DE2468469B00D540C7 /* libRNNearBee.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFA55DD2468469B00D540C7 /* libRNNearBee.a */; };
+		2BA8A6AA196759D4D06CB484 /* Pods_sample_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4920CED75E89203A04F9C7F6 /* Pods_sample_app.framework */; };
 		BEFA55E7246A7E8400D540C7 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFA55E6246A7E8400D540C7 /* Dummy.swift */; };
-		FBC8442103D0A113E0E46E94 /* libPods-sample_app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B791C0F14E32333B80ED39 /* libPods-sample_app.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,8 +26,12 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = sample_app/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = sample_app/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = sample_app/main.m; sourceTree = "<group>"; };
+		4920CED75E89203A04F9C7F6 /* Pods_sample_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sample_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DF3FCEEEDCB07C4344C6A11 /* Pods-sample_app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sample_app.debug.xcconfig"; path = "Target Support Files/Pods-sample_app/Pods-sample_app.debug.xcconfig"; sourceTree = "<group>"; };
-		B5B791C0F14E32333B80ED39 /* libPods-sample_app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sample_app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE0F87F92523136200493E20 /* RNNearBee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RNNearBee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE0F87FD2523137100493E20 /* NearBee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NearBee.framework; path = Pods/NearBee/NearBee/NearBee.framework; sourceTree = "<group>"; };
+		BE57A5B2252DF09E00EA5FDD /* libEddystoneScanner.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libEddystoneScanner.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE57A5B4252DF0A600EA5FDD /* libRNNearBee.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNNearBee.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEFA55DD2468469B00D540C7 /* libRNNearBee.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNNearBee.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEFA55E5246A7E8300D540C7 /* sample_app-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sample_app-Bridging-Header.h"; sourceTree = "<group>"; };
 		BEFA55E6246A7E8400D540C7 /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Dummy.swift; path = sample_app/Dummy.swift; sourceTree = "<group>"; };
@@ -42,8 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEFA55DE2468469B00D540C7 /* libRNNearBee.a in Frameworks */,
-				FBC8442103D0A113E0E46E94 /* libPods-sample_app.a in Frameworks */,
+				2BA8A6AA196759D4D06CB484 /* Pods_sample_app.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,10 +86,14 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BE57A5B4252DF0A600EA5FDD /* libRNNearBee.a */,
+				BE57A5B2252DF09E00EA5FDD /* libEddystoneScanner.a */,
+				BE0F87FD2523137100493E20 /* NearBee.framework */,
+				BE0F87F92523136200493E20 /* RNNearBee.framework */,
 				BEFA55DD2468469B00D540C7 /* libRNNearBee.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				B5B791C0F14E32333B80ED39 /* libPods-sample_app.a */,
+				4920CED75E89203A04F9C7F6 /* Pods_sample_app.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -146,7 +152,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				D09F0975DE151173DF8C7EB8 /* [CP] Copy Pods Resources */,
+				1274AD40D48AF844D7653418 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -221,6 +227,23 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		1274AD40D48AF844D7653418 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-sample_app/Pods-sample_app-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-sample_app/Pods-sample_app-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-sample_app/Pods-sample_app-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7BE3C70689E4518286CB972F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -241,23 +264,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D09F0975DE151173DF8C7EB8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-sample_app/Pods-sample_app-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-sample_app/Pods-sample_app-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-sample_app/Pods-sample_app-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -311,12 +317,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5DF3FCEEEDCB07C4344C6A11 /* Pods-sample_app.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 44VN4BY3TF;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/NearBee/NearBee",
+				);
 				INFOPLIST_FILE = sample_app/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
@@ -341,11 +350,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CDD968F480CA34ED315150D7 /* Pods-sample_app.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 44VN4BY3TF;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/NearBee/NearBee",
+				);
 				INFOPLIST_FILE = sample_app/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
