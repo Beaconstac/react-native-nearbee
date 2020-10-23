@@ -11,8 +11,8 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2BA8A6AA196759D4D06CB484 /* Pods_sample_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4920CED75E89203A04F9C7F6 /* Pods_sample_app.framework */; };
 		BEFA55E7246A7E8400D540C7 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFA55E6246A7E8400D540C7 /* Dummy.swift */; };
+		FA26281DD122F4F58A6B0A70 /* libPods-sample_app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7BC70C302ABC83CDAD7264 /* libPods-sample_app.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +26,8 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = sample_app/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = sample_app/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = sample_app/main.m; sourceTree = "<group>"; };
-		4920CED75E89203A04F9C7F6 /* Pods_sample_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sample_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DF3FCEEEDCB07C4344C6A11 /* Pods-sample_app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sample_app.debug.xcconfig"; path = "Target Support Files/Pods-sample_app/Pods-sample_app.debug.xcconfig"; sourceTree = "<group>"; };
+		8C7BC70C302ABC83CDAD7264 /* libPods-sample_app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sample_app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE0F87F92523136200493E20 /* RNNearBee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RNNearBee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE0F87FD2523137100493E20 /* NearBee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NearBee.framework; path = Pods/NearBee/NearBee/NearBee.framework; sourceTree = "<group>"; };
 		BE57A5B2252DF09E00EA5FDD /* libEddystoneScanner.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libEddystoneScanner.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,7 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BA8A6AA196759D4D06CB484 /* Pods_sample_app.framework in Frameworks */,
+				FA26281DD122F4F58A6B0A70 /* libPods-sample_app.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +93,7 @@
 				BEFA55DD2468469B00D540C7 /* libRNNearBee.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				4920CED75E89203A04F9C7F6 /* Pods_sample_app.framework */,
+				8C7BC70C302ABC83CDAD7264 /* libPods-sample_app.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -152,7 +152,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				1274AD40D48AF844D7653418 /* [CP] Embed Pods Frameworks */,
+				35C645F59AE793A33E8BD6E6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -227,21 +227,21 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		1274AD40D48AF844D7653418 /* [CP] Embed Pods Frameworks */ = {
+		35C645F59AE793A33E8BD6E6 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-sample_app/Pods-sample_app-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-sample_app/Pods-sample_app-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-sample_app/Pods-sample_app-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-sample_app/Pods-sample_app-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-sample_app/Pods-sample_app-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-sample_app/Pods-sample_app-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7BE3C70689E4518286CB972F /* [CP] Check Pods Manifest.lock */ = {
