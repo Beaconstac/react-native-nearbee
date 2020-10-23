@@ -17,21 +17,13 @@ Pod::Spec.new do |s|
   s.platform       = :ios, '10.0'
 
   # React is split into a set of subspecs, these are the essentials
-  s.dependency 'React-Core'
-  s.dependency 'React-cxxreact'
-  s.dependency 'React-RCTAnimation'
-  s.dependency 'React-RCTImage'
-  s.dependency 'React-RCTLinking'
-  s.dependency 'React-RCTNetwork'
-  s.dependency 'React-RCTText'
+    s.dependency 'React-Core'
+    s.dependency 'React-cxxreact'
+    s.dependency 'React-RCTAnimation'
+    s.dependency 'React-RCTImage'
+    s.dependency 'React-RCTLinking'
+    s.dependency 'React-RCTNetwork'
+    s.dependency 'React-RCTText'
 
-  # React's dependencies
-  s.dependency 'yoga'
-  podspecs = [
-    '../react-native/third-party-podspecs/DoubleConversion.podspec',
-    '../react-native/third-party-podspecs/Folly.podspec',
-    '../react-native/third-party-podspecs/glog.podspec'
-  ]
-
-  s.dependency 'NearBee', '0.3.6-beta1'
+  s.dependency 'NearBee', '0.4.0'
 end
