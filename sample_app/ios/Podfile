@@ -1,41 +1,18 @@
-# Uncomment the next line to define a global platform for your project
 platform :ios, '10.0'
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-node_modules_path = '../node_modules'
-react_path = File.join(node_modules_path, 'react-native')
-rnnearbee_spec_path = File.join(node_modules_path, 'react-native-nearbee/RNNearBee.podspec')
-yoga_path = File.join(react_path, 'ReactCommon/yoga')
-folly_spec_path = File.join(react_path, 'third-party-podspecs/Folly.podspec')
-glog_spec_path = File.join(react_path, 'third-party-podspecs/glog.podspec')
-double_conversion_spec_path = File.join(react_path, 'third-party-podspecs/DoubleConversion.podspec')
+permissions_path = '../node_modules/react-native-permissions/ios'
 
 target 'sample_app' do
-  inherit! :search_paths
-
+  config = use_native_modules!
+  use_react_native!(:path => config["reactNativePath"])
   pod 'NearBee'
-  # We want extra developer support in React inside this app
-  pod 'React', :path => react_path, :subspecs => [
-    'Core',
-    'CxxBridge', # Include this for RN >= 0.47
-    'DevSupport', # Include this to enable In-App Devmenu if RN >= 0.43
-    'RCTText',
-    'RCTNetwork',
-    'RCTWebSocket', # Needed for debugging
-    'RCTAnimation',
-  ]
-
-  # We're letting CP know where it can find these Podspecs
-  pod 'yoga', :path => yoga_path
-  pod 'Folly', :podspec => folly_spec_path
-  pod 'DoubleConversion', :podspec => double_conversion_spec_path
-  pod 'glog', :podspec => glog_spec_path
-
   pod 'RNNearBee', :path => '../node_modules/react-native-nearbee'
-
-  pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions-ble-fix'
-
-  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
-
-  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+  pod 'Permission-BluetoothPeripheral', :path => "#{permissions_path}/BluetoothPeripheral.podspec"
+  pod 'Permission-LocationAlways', :path => "#{permissions_path}/LocationAlways.podspec"
+  pod 'Permission-LocationWhenInUse', :path => "#{permissions_path}/LocationWhenInUse.podspec"
+  pod 'Permission-Notifications', :path => "#{permissions_path}/Notifications.podspec"
 
 end
+

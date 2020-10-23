@@ -3,14 +3,13 @@
  * https://github.com/facebook/react-native
  *
  * @format
- * @flow
+ * @flow strict-local
  */
-
 import React, {Component} from 'react';
-import {ActivityIndicator, FlatList, Image, NativeEventEmitter, Platform, StyleSheet, Text, View} from 'react-native';
+import {ActivityIndicator, FlatList, Image, NativeEventEmitter, Platform, StyleSheet, Text, View, AppState} from 'react-native';
 import {ListItem} from 'react-native-elements'
 import NearBee from './nearbee_sdk/NearBee';
-import Permissions from 'react-native-permissions-ble-fix'
+import {PERMISSIONS, request as PermissionRequest, requestMultiple as PermissionRequests, checkMultiple as PermissionChecks, RESULTS as PermissionResult} from 'react-native-permissions';
 
 
 const eventBeacons = "nearBeeNotifications";
@@ -37,13 +36,25 @@ export default class App extends Component {
 
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.checkPermissions();
+        AppState.addEventListener("change", this._handleAppStateChange);
     }
 
     componentWillUnmount() {
         this.stopScan();
+        AppState.removeEventListener("change", this._handleAppStateChange);
     }
+
+    _handleAppStateChange = nextAppState => {
+        console.log("-------- appState: ", nextAppState);
+        if (
+            nextAppState.match(/inactive|background/)) {
+            this.stopScan();
+        }  else {
+            this.startScan();
+        }
+    };
 
     onBackgroundChange = () => {
         if (this.bgEnabled === true) {
@@ -62,6 +73,7 @@ export default class App extends Component {
     onBeaconsFound = (event) => {
         let beacons = [];
         let beacJson = JSON.parse(event.nearBeeNotifications);
+        // console.warn('beacon count: ', beacJson.nearBeeNotifications.length);
         for (let index = 0; index < beacJson.nearBeeNotifications.length; index++) {
             const element = beacJson.nearBeeNotifications[index];
             element['key'] = element.url;
@@ -94,6 +106,7 @@ export default class App extends Component {
             return;
         }
         NearBee.initialize();
+        // NearBee.enableDebugMode(true);
         NearBee.enableBackgroundNotifications(true);
         const eventEmitter = new NativeEventEmitter(NearBee);
         eventEmitter.addListener(eventBeacons, this.onBeaconsFound);
@@ -103,48 +116,61 @@ export default class App extends Component {
     }
 
     async requestLocationPermission() {
-        Permissions.request('location', 'always').then(response => {
+        PermissionRequests(Platform.select({
+                android: [PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION, PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION],
+                ios: [PERMISSIONS.IOS.LOCATION_ALWAYS, PERMISSIONS.IOS.LOCATION_WHEN_IN_USE],
+            })
+        ).then(response => {
             // Returns once the user has chosen to 'allow' or to 'not allow' access
             // Response is one of: 'authorized', 'denied', 'restricted', or 'undetermined'
-            if (response === 'authorized') {
-                this.checkPermissions()
+            if (Platform.OS === 'ios') {
+                if (response[PERMISSIONS.IOS.LOCATION_ALWAYS] === PermissionResult.GRANTED || response[PERMISSIONS.IOS.LOCATION_WHEN_IN_USE] === PermissionResult.GRANTED) {
+                    this.checkPermissions();
+                }
+            } else {
+                if (response[PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION] === PermissionResult.GRANTED || response[PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION] === PermissionResult.GRANTED) {
+                    this.checkPermissions();
+                }
             }
-        })
+        });
     }
 
     async requestBluetoothPermission() {
-        Permissions.request('bluetooth').then(response => {
+        PermissionRequest(PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL
+        ).then(response => {
             // Returns once the user has chosen to 'allow' or to 'not allow' access
             // Response is one of: 'authorized', 'denied', 'restricted', or 'undetermined'
-            if (response === 'authorized') {
+            if (response === PermissionResult.GRANTED) {
                 this.checkPermissions()
             }
         })
     }
 
     async checkPermissions() {
-        const permissionRequests = ['location'];
-        const isIOS = Platform.OS === 'ios';
-        if (isIOS) {
-            permissionRequests.push('bluetooth');
-        }
-        Permissions.checkMultiple(permissionRequests).then(response => {
+        PermissionChecks(Platform.select({
+            android: [PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION, PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION],
+            ios: [PERMISSIONS.IOS.LOCATION_ALWAYS, PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL],
+        })).then(response => {
             //response is an object mapping type to permission
-            if (response.location === 'authorized') {
-                this.setState({
-                    locationPermission: true,
-                });
-            }
-            if (isIOS) {
-                if (response.bluetooth === 'authorized') {
+            if (Platform.OS === 'ios') {
+                if (response[PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL] === PermissionResult.GRANTED) {
                     this.setState({
                         bluetoothPermission: true
                     });
                 }
+                if (response[PERMISSIONS.IOS.LOCATION_ALWAYS] === PermissionResult.GRANTED || response[PERMISSIONS.IOS.LOCATION_WHEN_IN_USE] === PermissionResult.GRANTED) {
+                    this.setState({
+                        locationPermission: true
+                    });
+                }
             } else {
-                this.setState({
-                    bluetoothPermission: true
-                })
+                // Bluetooth permission is only required for iOS
+                if (response[PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION] === PermissionResult.GRANTED || response[PERMISSIONS.IOS.LOCATION_ALWAYS] === PermissionResult.GRANTED || response[PERMISSIONS.IOS.LOCATION_WHEN_IN_USE] === PermissionResult.GRANTED ) {
+                    this.setState({
+                        locationPermission: true,
+                        bluetoothPermission: true
+                    });
+                }
             }
 
             // Checking all the states

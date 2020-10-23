@@ -45,12 +45,18 @@ RCT_EXPORT_METHOD(enableBackgroundNotifications:(BOOL)enabled) {
 }
 
 RCT_EXPORT_METHOD(stopScanning) {
+//     NSLog(@"stop nearbee scanning");
     self.beacons = [@[] mutableCopy];
     [RNNearBee.nearBee stopScanning];
 }
 
 RCT_EXPORT_METHOD(startScanning) {
+//     NSLog(@"start nearbee scanning");
     [RNNearBee.nearBee startScanning];
+}
+
+RCT_EXPORT_METHOD(enableDebugMode:(BOOL)enabled) {
+    RNNearBee.nearBee.debugMode = enabled;
 }
 
 RCT_EXPORT_METHOD(clearNotificationCache) {
@@ -71,16 +77,22 @@ RCT_EXPORT_METHOD(stopGeoFenceMonitoring) {
 
 
 - (void)didFindBeacons:(NSArray<NearBeeBeacon *> * _Nonnull)beacons {
+
+//     NSLog(@"RNNearBee || found beacon(s) :: %lu", beacons.count);
     [self.beacons addObjectsFromArray:beacons];
     [self updateList:self.beacons];
 }
 
 - (void)didLoseBeacons:(NSArray<NearBeeBeacon *> * _Nonnull)beacons {
+
+//     NSLog(@"RNNearBee || lost beacon(s) :: %lu", beacons.count);
     [self.beacons removeObjectsInArray:beacons];
     [self updateList:self.beacons];
 }
 
 - (void)didUpdateBeacons:(NSArray<NearBeeBeacon *> *)beacons {
+
+//     NSLog(@"RNNearBee || update beacon(s) :: %lu", beacons.count);
     for (NearBeeBeacon *beacon in beacons) {
         NSUInteger index = [self.beacons indexOfObject:beacon];
         if (index == NSNotFound) {
@@ -133,7 +145,8 @@ RCT_EXPORT_METHOD(stopGeoFenceMonitoring) {
         beaconJson[@"eddystoneUID"] = beacon.eddystoneUID;
         [jsonArray addObject:beaconJson];
     }
-    if (jsonArray.count > 0) {
+    if (jsonArray.count >= 0) {
+//         NSLog(@"RNNearBee || Number of beacons :: %lu", jsonArray.count);
         NSDictionary *json = @{@"nearBeeNotifications":jsonArray};
         NSError *error;
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:json

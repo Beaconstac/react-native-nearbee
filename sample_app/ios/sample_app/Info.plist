@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>co.nearbee.api_key</key>
-	<string>DEVELOPER_TOKEN</string>
-	<key>co.nearbee.organization_id</key>
-	<string>ORGANIZATION_ID</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -41,8 +37,30 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Range Beacons</string>
+	<key>NSLocationAlwaysAndWhenInUsageDescription</key>
+	<string>Range beacons</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Range Beacons</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Range Beacons</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Range Beacons</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Range beacons</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>bluetooth-central</string>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+		<string>bluetooth-le</string>
+	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -51,27 +69,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>Range Beacons</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Range Beacons</string>
-  <key>NSLocationAlwaysAndWhenInUsageDescription</key>
-  <string>Range beacons</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Range Beacons</string>
-	<key>NSLocationUsageDescription</key>
-	<string>Range Beacons</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Range Beacons</string>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>bluetooth-central</string>
-		<string>location</string>
-	</array>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>armv7</string>
-		<string>bluetooth-le</string>
-	</array>
+	<key>co.nearbee.api_key</key>
+	<string>API_KEY</string>
+	<key>co.nearbee.organization_id</key>
+	<string>ORG_ID</string>
 </dict>
 </plist>
