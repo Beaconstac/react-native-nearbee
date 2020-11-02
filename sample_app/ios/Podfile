@@ -5,6 +5,18 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 permissions_path = '../node_modules/react-native-permissions/ios'
 
 target 'sample_app' do
+
+use_frameworks!
+  pre_install do |installer|
+     installer.pod_targets.each do |pod|
+       if pod.name.eql?('RNPermissions') || pod.name.start_with?('Permission-')
+         def pod.build_type;
+           Pod::BuildType.static_library # I assume you use CocoaPods >= 1.9
+         end
+       end
+     end
+   end
+
   config = use_native_modules!
   use_react_native!(:path => config["reactNativePath"])
   pod 'NearBee'
