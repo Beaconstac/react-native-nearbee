@@ -25,5 +25,5 @@ Pod::Spec.new do |s|
     s.dependency 'React-RCTNetwork'
     s.dependency 'React-RCTText'
 
-  s.dependency 'NearBee', '~>0.4.1'
+  s.dependency 'NearBee', '~>0.4.4'
 end
