@@ -20,7 +20,7 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - NearBee (0.4.0):
+  - NearBee (0.4.4):
     - EddystoneScanner
     - Socket.IO-Client-Swift
   - Permission-BluetoothPeripheral (2.1.5):
@@ -259,8 +259,8 @@ PODS:
     - React-jsi (= 0.63.2)
   - RNCAsyncStorage (1.6.2):
     - React
-  - RNNearBee (3.2.0-beta.2):
-    - NearBee (= 0.4.0)
+  - RNNearBee (3.3.3):
+    - NearBee (~> 0.4.4)
     - React-Core
     - React-cxxreact
     - React-RCTAnimation
@@ -402,7 +402,7 @@ SPEC CHECKSUMS:
   FBReactNativeSpec: dc7fa9088f0f2a998503a352b0554d69a4391c5a
   Folly: b73c3869541e86821df3c387eb0af5f65addfab4
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
-  NearBee: 05cd6aa84b07bfecb2cd12b314f8cf96a2a31198
+  NearBee: 92421cda11a9643a2c0a893f5e1c419a1d986b29
   Permission-BluetoothPeripheral: 4663a8373072abfe3099c44cb06bf10b0c16c110
   Permission-LocationAlways: 155e6251b757b380f6354737cae8e8d59c472495
   Permission-LocationWhenInUse: 3624cf08c12c6019926aba3054efee7f4f8ee91e
@@ -428,7 +428,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: 4d2e726957f4087449739b595f107c0d4b6c2d2d
   ReactCommon: a0a1edbebcac5e91338371b72ffc66aa822792ce
   RNCAsyncStorage: 60a80e72d95bf02a01cace55d3697d9724f0d77f
-  RNNearBee: 0544830d3768414091831453602ea2c859164436
+  RNNearBee: b34b525439f4fb11da98f86b4e80a003333fa19e
   RNPermissions: ad71dd4f767ec254f2cd57592fbee02afee75467
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
