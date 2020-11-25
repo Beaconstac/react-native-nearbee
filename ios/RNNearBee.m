@@ -75,6 +75,10 @@ RCT_EXPORT_METHOD(stopGeoFenceMonitoring) {
     [RNNearBee.nearBee stopMonitoringGeoFenceRegions];
 }
 
+- (void)didEnterGeofence:(NearBeeGeoFence *)geofence :(GeoFenceAttachment *)attachment {
+//     NSLog(@"entered geofence region");
+}
+
 
 - (void)didFindBeacons:(NSArray<NearBeeBeacon *> * _Nonnull)beacons {
 
