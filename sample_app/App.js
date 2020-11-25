@@ -149,18 +149,19 @@ export default class App extends Component {
     async checkPermissions() {
         PermissionChecks(Platform.select({
             android: [PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION, PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION],
-            ios: [PERMISSIONS.IOS.LOCATION_ALWAYS, PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL],
+            ios: [PERMISSIONS.IOS.LOCATION_ALWAYS, PERMISSIONS.IOS.LOCATION_WHEN_IN_USE, PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL],
         })).then(response => {
             //response is an object mapping type to permission
             if (Platform.OS === 'ios') {
-                if (response[PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL] === PermissionResult.GRANTED) {
-                    this.setState({
-                        bluetoothPermission: true
-                    });
-                }
+                console.log(response[PERMISSIONS.IOS.LOCATION_WHEN_IN_USE]);
                 if (response[PERMISSIONS.IOS.LOCATION_ALWAYS] === PermissionResult.GRANTED || response[PERMISSIONS.IOS.LOCATION_WHEN_IN_USE] === PermissionResult.GRANTED) {
                     this.setState({
                         locationPermission: true
+                    });
+                }
+                if (response[PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL] === PermissionResult.GRANTED) {
+                    this.setState({
+                        bluetoothPermission: true
                     });
                 }
             } else {
@@ -174,10 +175,10 @@ export default class App extends Component {
             }
 
             // Checking all the states
-            if (!this.state.locationPermission) {
-                this.requestLocationPermission();
-            } else if (!this.state.bluetoothPermission) {
+            if (!this.state.bluetoothPermission) {
                 this.requestBluetoothPermission();
+            } else if (!this.state.locationPermission) {
+                this.requestLocationPermission();
             } else {
                 this.initNearBee();
             }
