@@ -75,6 +75,10 @@ RCT_EXPORT_METHOD(stopGeoFenceMonitoring) {
     [RNNearBee.nearBee stopMonitoringGeoFenceRegions];
 }
 
+- (void)didEnterGeofence:(NearBeeGeoFence *)geofence :(GeoFenceAttachment *)attachment {
+//     NSLog(@"entered geofence region");
+}
+
 
 - (void)didFindBeacons:(NSArray<NearBeeBeacon *> * _Nonnull)beacons {
 
@@ -105,7 +109,7 @@ RCT_EXPORT_METHOD(stopGeoFenceMonitoring) {
 }
 
 - (void)didThrowError:(NSError * _Nonnull)error {
-    NSDictionary *json = @{@"nearBeeError":error};
+    NSDictionary *json = @{@"nearBeeError":error.localizedDescription};
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:json
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];
