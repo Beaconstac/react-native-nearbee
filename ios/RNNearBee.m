@@ -109,14 +109,13 @@ RCT_EXPORT_METHOD(stopGeoFenceMonitoring) {
 }
 
 - (void)didThrowError:(NSError * _Nonnull)error {
-//     NSDictionary *json = @{@"nearBeeError":error};
-//     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:json
-//                                                        options:NSJSONWritingPrettyPrinted
-//                                                          error:&error];
-//     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-//     NSDictionary *mappedData = @{@"nearBeeError": jsonString};
-//     [self sendEventWithName:@"nearBeeError" body:mappedData];
-    NSLog(@"NearBee didThrowError")
+    NSDictionary *json = @{@"nearBeeError":error.localizedDescription};
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:json
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSDictionary *mappedData = @{@"nearBeeError": jsonString};
+    [self sendEventWithName:@"nearBeeError" body:mappedData];
 }
 
 - (void)didUpdateState:(enum NearBeeState)state {
