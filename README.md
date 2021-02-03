@@ -160,6 +160,15 @@ This will clear the cached server responses and will force NearBee to fetch fres
 NearBee.clearNotificationCache();
 ```
 
+### Monitoring for Geofence regions
+
+This will start scanning for geofence notifications
+
+```javascript
+NearBee.startGeoFenceMonitoring();
+```
+
+
 ### Overriding notification on-click behaviour
 
 #### Android
