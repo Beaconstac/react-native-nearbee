@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../../../../Learn/ios/cocoapod-demo/cocoaDemo/TestLocation1.gpx">
+   </FileRef>
+   <FileRef
+      location = "group:../../../../Learn/ios/cocoapod-demo/cocoaDemo/TestLocation2.gpx">
+   </FileRef>
+   <FileRef
       location = "group:sample_app.xcodeproj">
    </FileRef>
    <FileRef

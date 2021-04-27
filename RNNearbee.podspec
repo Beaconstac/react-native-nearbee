@@ -25,5 +25,9 @@ Pod::Spec.new do |s|
     s.dependency 'React-RCTNetwork'
     s.dependency 'React-RCTText'
 
-  s.dependency 'NearBee', '~>0.4.6'
+  s.dependency 'NearBee', '~>0.4.7'
+  s.pod_target_xcconfig = {
+      'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
+    }
+    s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 end
