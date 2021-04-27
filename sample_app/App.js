@@ -10,6 +10,12 @@ import {ActivityIndicator, FlatList, Image, NativeEventEmitter, Platform, StyleS
 import {ListItem} from 'react-native-elements'
 import NearBee from './nearbee_sdk/NearBee';
 import {PERMISSIONS, request as PermissionRequest, requestMultiple as PermissionRequests, checkMultiple as PermissionChecks, RESULTS as PermissionResult} from 'react-native-permissions';
+import Dialog, {
+  DialogContent,
+  DialogTitle,
+  DialogFooter,
+  DialogButton,
+} from 'react-native-popup-dialog';
 
 
 const eventBeacons = "nearBeeNotifications";
@@ -30,7 +36,8 @@ export default class App extends Component {
             locationPermission: false,
             bluetoothPermission: false,
             noBeaconError: false,
-            scanStartTime: null
+            scanStartTime: null,
+            locationDialogueBox: false,
         };
 
 
@@ -116,6 +123,9 @@ export default class App extends Component {
     }
 
     async requestLocationPermission() {
+        if (Platform.OS !== 'ios') {
+          this.setState({locationDialogueBox: false});
+        }
         PermissionRequests(Platform.select({
                 android: [PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION, PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION],
                 ios: [PERMISSIONS.IOS.LOCATION_ALWAYS, PERMISSIONS.IOS.LOCATION_WHEN_IN_USE],
@@ -169,16 +179,19 @@ export default class App extends Component {
                 if (response[PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION] === PermissionResult.GRANTED || response[PERMISSIONS.IOS.LOCATION_ALWAYS] === PermissionResult.GRANTED || response[PERMISSIONS.IOS.LOCATION_WHEN_IN_USE] === PermissionResult.GRANTED ) {
                     this.setState({
                         locationPermission: true,
-                        bluetoothPermission: true
                     });
                 }
             }
 
             // Checking all the states
-            if (!this.state.bluetoothPermission) {
+            if (Platform.OS === 'ios' && !this.state.bluetoothPermission) {
                 this.requestBluetoothPermission();
             } else if (!this.state.locationPermission) {
+              if (Platform.OS === 'ios') {
                 this.requestLocationPermission();
+              } else {
+                this.setState({locationDialogueBox: true});
+              }
             } else {
                 this.initNearBee();
             }
@@ -205,6 +218,46 @@ export default class App extends Component {
     render() {
         return (
             <View style={{flex: 1, backgroundColor: '#ffffff'}}>
+              <Dialog
+                  width={0.9}
+                  visible={this.state.locationDialogueBox}
+                  dialogTitle={
+                    <DialogTitle
+                        title="Sample App"
+                        style={{
+                          backgroundColor: '#F7F7F8',
+                        }}
+                        hasTitleBar={false}
+                        align="left"
+                    />
+                  }
+                  onTouchOutside={() => {
+                    this.setState({locationDialogueBox: true});
+                  }}
+                  footer={
+                      <DialogButton
+                          style={{marginBottom:10, marginTop:10}}
+                          text="OK"
+                          bordered
+                          onPress={() => {
+                            this.requestLocationPermission();
+                          }}
+                          key="button-1"
+                          align="left"
+                      />
+                  }>
+                <DialogContent
+                    style={{
+                      backgroundColor: '#F7F7F8',
+                    }}>
+                  <Text>
+                    This app collects location data to enable beacon & geofence
+                    notifications even when the app is closed or not in use. The data
+                    collected is completely anonymized and not used for any other
+                    purpose.
+                  </Text>
+                </DialogContent>
+              </Dialog>
                 {this.state.loading ?
                     <View style={[styles.flexJustifyCenter, styles.alignItemsCenter]}>
                         <Image resizeMode='contain' source={require('./no_beacon_error.png')}
