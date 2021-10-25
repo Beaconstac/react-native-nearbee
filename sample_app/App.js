@@ -177,9 +177,11 @@ export default class App extends Component {
             // Checking all the states
             if (!this.state.bluetoothPermission) {
                 this.requestBluetoothPermission();
-            } else if (!this.state.locationPermission) {
+            }
+            if (!this.state.locationPermission) {
                 this.requestLocationPermission();
-            } else {
+            }
+            if (this.state.bluetoothPermission && this.state.locationPermission){
                 this.initNearBee();
             }
         });
