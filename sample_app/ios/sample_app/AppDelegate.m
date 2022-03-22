@@ -1,4 +1,5 @@
 #import "AppDelegate.h"
+@import SafariServices;
 
 #import <UserNotifications/UserNotifications.h>
 
@@ -68,11 +69,37 @@ static void InitializeFlipper(UIApplication *application) {
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler
 {
-  BOOL isNearBeeNotificaiton = [RNNearBee checkAndProcessNearbyNotification:response.notification];
-  if (!isNearBeeNotificaiton) {
-    // You should handle the notification
+  NSString *url = nil;
+  
+  if (response.notification.request.content.userInfo[@"EddystoneURL"] != nil) {
+    url = response.notification.request.content.userInfo[@"EddystoneURL"];
+  } else if (response.notification.request.content.userInfo[@"GeoFenceURL"] != nil) {
+    url = response.notification.request.content.userInfo[@"GeoFenceURL"];
   }
-  completionHandler();
+  
+  if (url != nil) {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+
+      UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
+
+      while (topController.presentedViewController) {
+          topController = topController.presentedViewController;
+      }
+
+      NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:url]];
+      SFSafariViewController *sfvc = [[SFSafariViewController alloc] initWithURL:URL];
+
+      [topController presentViewController:sfvc animated:YES completion:nil];
+    });
+  } else {
+    NSLog(@"NearBee: url not found");
+  }
+  
+//  BOOL isNearBeeNotificaiton = [RNNearBee checkAndProcessNearbyNotification:response.notification];
+//  if (!isNearBeeNotificaiton) {
+//    // You should handle the notification
+//  }
+//  completionHandler();
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
